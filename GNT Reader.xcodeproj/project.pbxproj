@@ -15,6 +15,14 @@
 		D87AB11F26D2DECC0026A857 /* GNT_Reader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D87AB11D26D2DECC0026A857 /* GNT_Reader.xcdatamodeld */; };
 		D87AB12A26D2DECC0026A857 /* GNT_ReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB12926D2DECC0026A857 /* GNT_ReaderTests.swift */; };
 		D87AB13526D2DECC0026A857 /* GNT_ReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB13426D2DECC0026A857 /* GNT_ReaderUITests.swift */; };
+		D87AB14626D2DFE40026A857 /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB14526D2DFE40026A857 /* ReaderView.swift */; };
+		D87AB14826D2E0390026A857 /* VerseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB14726D2E0390026A857 /* VerseDataSource.swift */; };
+		D87AB14A26D2E06A0026A857 /* VerseRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB14926D2E06A0026A857 /* VerseRef.swift */; };
+		D87AB14C26D2E0AA0026A857 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB14B26D2E0AA0026A857 /* Book.swift */; };
+		D87AB14E26D2E1B00026A857 /* Verse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB14D26D2E1B00026A857 /* Verse.swift */; };
+		D87AB15026D2E1BD0026A857 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB14F26D2E1BD0026A857 /* Word.swift */; };
+		D87AB15226D2E1E50026A857 /* WordParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB15126D2E1E50026A857 /* WordParsing.swift */; };
+		D87AB15526D2F7B70026A857 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB15426D2F7B70026A857 /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,14 @@
 		D87AB13026D2DECC0026A857 /* GNT ReaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GNT ReaderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87AB13426D2DECC0026A857 /* GNT_ReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNT_ReaderUITests.swift; sourceTree = "<group>"; };
 		D87AB13626D2DECC0026A857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D87AB14526D2DFE40026A857 /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
+		D87AB14726D2E0390026A857 /* VerseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseDataSource.swift; sourceTree = "<group>"; };
+		D87AB14926D2E06A0026A857 /* VerseRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseRef.swift; sourceTree = "<group>"; };
+		D87AB14B26D2E0AA0026A857 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		D87AB14D26D2E1B00026A857 /* Verse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verse.swift; sourceTree = "<group>"; };
+		D87AB14F26D2E1BD0026A857 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		D87AB15126D2E1E50026A857 /* WordParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordParsing.swift; sourceTree = "<group>"; };
+		D87AB15426D2F7B70026A857 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +115,10 @@
 		D87AB11126D2DECC0026A857 /* GNT Reader */ = {
 			isa = PBXGroup;
 			children = (
+				D87AB15326D2F7AD0026A857 /* Util */,
+				D87AB14426D2DF7E0026A857 /* Model */,
+				D87AB14326D2DF600026A857 /* Data */,
+				D87AB14226D2DF4B0026A857 /* View */,
 				D87AB11226D2DECC0026A857 /* GNT_ReaderApp.swift */,
 				D87AB11426D2DECC0026A857 /* ContentView.swift */,
 				D87AB11626D2DECC0026A857 /* Assets.xcassets */,
@@ -134,6 +154,42 @@
 				D87AB13626D2DECC0026A857 /* Info.plist */,
 			);
 			path = "GNT ReaderUITests";
+			sourceTree = "<group>";
+		};
+		D87AB14226D2DF4B0026A857 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D87AB14526D2DFE40026A857 /* ReaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D87AB14326D2DF600026A857 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D87AB14726D2E0390026A857 /* VerseDataSource.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D87AB14426D2DF7E0026A857 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D87AB14926D2E06A0026A857 /* VerseRef.swift */,
+				D87AB14B26D2E0AA0026A857 /* Book.swift */,
+				D87AB14D26D2E1B00026A857 /* Verse.swift */,
+				D87AB14F26D2E1BD0026A857 /* Word.swift */,
+				D87AB15126D2E1E50026A857 /* WordParsing.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D87AB15326D2F7AD0026A857 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D87AB15426D2F7B70026A857 /* StringExtensions.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +321,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87AB15526D2F7B70026A857 /* StringExtensions.swift in Sources */,
+				D87AB14C26D2E0AA0026A857 /* Book.swift in Sources */,
+				D87AB14826D2E0390026A857 /* VerseDataSource.swift in Sources */,
 				D87AB11C26D2DECC0026A857 /* Persistence.swift in Sources */,
+				D87AB14E26D2E1B00026A857 /* Verse.swift in Sources */,
+				D87AB14626D2DFE40026A857 /* ReaderView.swift in Sources */,
+				D87AB14A26D2E06A0026A857 /* VerseRef.swift in Sources */,
 				D87AB11526D2DECC0026A857 /* ContentView.swift in Sources */,
+				D87AB15026D2E1BD0026A857 /* Word.swift in Sources */,
+				D87AB15226D2E1E50026A857 /* WordParsing.swift in Sources */,
 				D87AB11F26D2DECC0026A857 /* GNT_Reader.xcdatamodeld in Sources */,
 				D87AB11326D2DECC0026A857 /* GNT_ReaderApp.swift in Sources */,
 			);
