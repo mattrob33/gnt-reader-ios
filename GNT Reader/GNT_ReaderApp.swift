@@ -12,7 +12,7 @@ struct GNT_ReaderApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ReaderView()
+            MainScreen()
         }
     }
 }
