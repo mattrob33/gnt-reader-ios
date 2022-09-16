@@ -18,22 +18,81 @@ struct MainScreen: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             ReaderView(viewModel: readerViewModel)
-            HStack {
-                Text("Contents")
-                    .onTapGesture {
-                        isShowingContents = true
-                    }
-            }
-            .frame(maxWidth: .infinity, maxHeight: 40)
-            .background(.gray)
+            BottomBar(
+                onTapContents: {
+                    isShowingContents = true
+                },
+                onTapVocab: {},
+                onTapAudio: {},
+                onTapSettings: {}
+            )
         }
         .sheet(isPresented: $isShowingContents) {
             TableofContents(
                 onVerseRefSelected: { ref in
                     readerViewModel.loadVersesForChapter(book: ref.book, chapter: ref.chapter)
                     isShowingContents = false
+                },
+                onDismiss: {
+                    isShowingContents = false
                 }
             )
         }
+    }
+}
+
+private struct BottomBar: View {
+    
+    var onTapContents: () -> ()
+    var onTapVocab: () -> ()
+    var onTapAudio: () -> ()
+    var onTapSettings: () -> ()
+    
+    var body: some View {
+        VStack {
+            BottomBarDivider()
+            
+            HStack(alignment: .center) {
+                BottomBarIcon(systemName: "list.bullet", onTap: onTapContents)
+                Spacer()
+                BottomBarIcon(systemName: "a.circle", onTap: onTapVocab)
+                Spacer()
+                BottomBarIcon(systemName: "speaker.wave.2.fill", onTap: onTapAudio)
+                Spacer()
+                BottomBarIcon(systemName: "gearshape.fill", onTap: onTapSettings)
+            }
+            .padding(.horizontal, 40)
+            .frame(maxWidth: .infinity, minHeight: 50)
+        }
+        .background(.background)
+    }
+}
+
+private struct BottomBarIcon: View {
+    
+    var systemName: String
+    var onTap: () -> ()
+    
+    var body: some View {
+        Image(systemName: systemName)
+            .resizable()
+            .aspectRatio(1, contentMode: .fit)
+            .frame(
+                width: 20,
+                height: 20
+            )
+            .onTapGesture {
+                onTap()
+        }
+    }
+}
+
+
+private struct BottomBarDivider: View {
+    
+    var body: some View {
+        Divider()
+            .frame(height: 1)
+            .overlay(.gray)
     }
 }

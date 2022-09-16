@@ -42,7 +42,9 @@ struct VersesTextView: View {
     
     var body: some View {
         VStack {
-            Text(tappedWord).padding()
+            Text(tappedWord)
+                .padding()
+                .font(Font.custom("Cardo", size: 18))
             getVersesText(verses)
         }
         .onOpenURL { url in
@@ -76,6 +78,7 @@ struct VersesTextView: View {
         let url = "gnt:\(word.wordId)"
         let markdown = try! AttributedString(markdown: "[\(word.text)](\(url))")
         return Text("\(markdown) ").regularText()
+            .font(Font.custom("Cardo", size: 22))
     }
 }
 

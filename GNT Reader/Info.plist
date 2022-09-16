@@ -59,5 +59,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>fonts/Cardo.ttf</string>
+		<string>fonts/Cardo-Bold.ttf</string>
+	</array>
 </dict>
 </plist>

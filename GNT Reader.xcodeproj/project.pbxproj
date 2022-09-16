@@ -28,6 +28,9 @@
 		D8FE7E7728D5068000996CEC /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E7628D5068000996CEC /* MainScreen.swift */; };
 		D8FE7E7928D506BB00996CEC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E7828D506BB00996CEC /* MainViewModel.swift */; };
 		D8FE7E7C28D50A2D00996CEC /* TableofContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E7B28D50A2D00996CEC /* TableofContents.swift */; };
+		D8FE7E7E28D5166200996CEC /* VerseRefUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E7D28D5166200996CEC /* VerseRefUtils.swift */; };
+		D8FE7E8228D51AA100996CEC /* Cardo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8FE7E8028D51AA100996CEC /* Cardo-Bold.ttf */; };
+		D8FE7E8328D51AA100996CEC /* Cardo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8FE7E8128D51AA100996CEC /* Cardo.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,9 @@
 		D8FE7E7628D5068000996CEC /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		D8FE7E7828D506BB00996CEC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D8FE7E7B28D50A2D00996CEC /* TableofContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableofContents.swift; sourceTree = "<group>"; };
+		D8FE7E7D28D5166200996CEC /* VerseRefUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseRefUtils.swift; sourceTree = "<group>"; };
+		D8FE7E8028D51AA100996CEC /* Cardo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cardo-Bold.ttf"; sourceTree = "<group>"; };
+		D8FE7E8128D51AA100996CEC /* Cardo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cardo.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,7 @@
 		D87AB11126D2DECC0026A857 /* GNT Reader */ = {
 			isa = PBXGroup;
 			children = (
+				D8FE7E7F28D51A6600996CEC /* fonts */,
 				D87AB15326D2F7AD0026A857 /* Util */,
 				D87AB14426D2DF7E0026A857 /* Model */,
 				D87AB14326D2DF600026A857 /* Data */,
@@ -200,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				D87AB15426D2F7B70026A857 /* StringExtensions.swift */,
+				D8FE7E7D28D5166200996CEC /* VerseRefUtils.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -228,6 +236,15 @@
 				D8FE7E7B28D50A2D00996CEC /* TableofContents.swift */,
 			);
 			path = Contents;
+			sourceTree = "<group>";
+		};
+		D8FE7E7F28D51A6600996CEC /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D8FE7E8028D51AA100996CEC /* Cardo-Bold.ttf */,
+				D8FE7E8128D51AA100996CEC /* Cardo.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +357,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87AB11A26D2DECC0026A857 /* Preview Assets.xcassets in Resources */,
+				D8FE7E8228D51AA100996CEC /* Cardo-Bold.ttf in Resources */,
+				D8FE7E8328D51AA100996CEC /* Cardo.ttf in Resources */,
 				D87AB11726D2DECC0026A857 /* Assets.xcassets in Resources */,
 				D8D8614C28D4EE6B00735875 /* gnt-app.db in Resources */,
 			);
@@ -367,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87AB15526D2F7B70026A857 /* StringExtensions.swift in Sources */,
+				D8FE7E7E28D5166200996CEC /* VerseRefUtils.swift in Sources */,
 				D87AB14C26D2E0AA0026A857 /* Book.swift in Sources */,
 				D8FE7E7728D5068000996CEC /* MainScreen.swift in Sources */,
 				D87AB14826D2E0390026A857 /* VerseDataSource.swift in Sources */,
