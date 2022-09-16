@@ -10,8 +10,6 @@
 		D87AB11326D2DECC0026A857 /* GNT_ReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB11226D2DECC0026A857 /* GNT_ReaderApp.swift */; };
 		D87AB11726D2DECC0026A857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87AB11626D2DECC0026A857 /* Assets.xcassets */; };
 		D87AB11A26D2DECC0026A857 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87AB11926D2DECC0026A857 /* Preview Assets.xcassets */; };
-		D87AB11C26D2DECC0026A857 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB11B26D2DECC0026A857 /* Persistence.swift */; };
-		D87AB11F26D2DECC0026A857 /* GNT_Reader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D87AB11D26D2DECC0026A857 /* GNT_Reader.xcdatamodeld */; };
 		D87AB12A26D2DECC0026A857 /* GNT_ReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB12926D2DECC0026A857 /* GNT_ReaderTests.swift */; };
 		D87AB13526D2DECC0026A857 /* GNT_ReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB13426D2DECC0026A857 /* GNT_ReaderUITests.swift */; };
 		D87AB14626D2DFE40026A857 /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB14526D2DFE40026A857 /* ReaderView.swift */; };
@@ -51,8 +49,6 @@
 		D87AB11226D2DECC0026A857 /* GNT_ReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNT_ReaderApp.swift; sourceTree = "<group>"; };
 		D87AB11626D2DECC0026A857 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D87AB11926D2DECC0026A857 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D87AB11B26D2DECC0026A857 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		D87AB11E26D2DECC0026A857 /* GNT_Reader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GNT_Reader.xcdatamodel; sourceTree = "<group>"; };
 		D87AB12026D2DECC0026A857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D87AB12526D2DECC0026A857 /* GNT ReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GNT ReaderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87AB12926D2DECC0026A857 /* GNT_ReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNT_ReaderTests.swift; sourceTree = "<group>"; };
@@ -129,9 +125,7 @@
 				D87AB14226D2DF4B0026A857 /* View */,
 				D87AB11226D2DECC0026A857 /* GNT_ReaderApp.swift */,
 				D87AB11626D2DECC0026A857 /* Assets.xcassets */,
-				D87AB11B26D2DECC0026A857 /* Persistence.swift */,
 				D87AB12026D2DECC0026A857 /* Info.plist */,
-				D87AB11D26D2DECC0026A857 /* GNT_Reader.xcdatamodeld */,
 				D87AB11826D2DECC0026A857 /* Preview Content */,
 			);
 			path = "GNT Reader";
@@ -351,7 +345,6 @@
 				D87AB14C26D2E0AA0026A857 /* Book.swift in Sources */,
 				D87AB14826D2E0390026A857 /* VerseDataSource.swift in Sources */,
 				D87AB15A26D312CC0026A857 /* ReaderViewModel.swift in Sources */,
-				D87AB11C26D2DECC0026A857 /* Persistence.swift in Sources */,
 				D87AB14E26D2E1B00026A857 /* Verse.swift in Sources */,
 				D87AB15726D30D880026A857 /* FakeVerseDataSourceImpl.swift in Sources */,
 				D87AB14626D2DFE40026A857 /* ReaderView.swift in Sources */,
@@ -359,7 +352,6 @@
 				D87AB15026D2E1BD0026A857 /* Word.swift in Sources */,
 				D8D8614728D4EB1300735875 /* SqliteVerseDataSource.swift in Sources */,
 				D87AB15226D2E1E50026A857 /* WordParsing.swift in Sources */,
-				D87AB11F26D2DECC0026A857 /* GNT_Reader.xcdatamodeld in Sources */,
 				D87AB11326D2DECC0026A857 /* GNT_ReaderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -699,19 +691,6 @@
 			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		D87AB11D26D2DECC0026A857 /* GNT_Reader.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D87AB11E26D2DECC0026A857 /* GNT_Reader.xcdatamodel */,
-			);
-			currentVersion = D87AB11E26D2DECC0026A857 /* GNT_Reader.xcdatamodel */;
-			path = GNT_Reader.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D87AB10726D2DECB0026A857 /* Project object */;
 }

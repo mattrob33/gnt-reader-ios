@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct GNT_ReaderApp: App {
-    let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
