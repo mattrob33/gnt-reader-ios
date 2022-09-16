@@ -19,11 +19,22 @@ class FakeVerseDataSourceImpl: VerseDataSource {
                     verse: 1
                 ),
                 words: [
-                    Word(text: "This", lexicalForm: "this", parsing: fakeWordParsing()),
-                    Word(text: "is", lexicalForm: "be", parsing: fakeWordParsing()),
-                    Word(text: "the", lexicalForm: "the", parsing: fakeWordParsing()),
-                    Word(text: "first", lexicalForm: "one", parsing: fakeWordParsing()),
-                    Word(text: "verse.", lexicalForm: "verse", parsing: fakeWordParsing())
+                    Word(text: "Ἐν", lexicalForm: "έν", parsing: fakeWordParsing()),
+                    Word(text: "ἀρχῇ", lexicalForm: "ἀρχῇ", parsing: fakeWordParsing()),
+                    Word(text: "ἦν", lexicalForm: "be", parsing: fakeWordParsing()),
+                    Word(text: "ὁ", lexicalForm: "ὁ", parsing: fakeWordParsing()),
+                    Word(text: "λόγος,", lexicalForm: "λόγος", parsing: fakeWordParsing()),
+                    Word(text: "καὶ", lexicalForm: "καὶ", parsing: fakeWordParsing()),
+                    Word(text: "ὁ", lexicalForm: "ὁ", parsing: fakeWordParsing()),
+                    Word(text: "λόγος", lexicalForm: "λόγος", parsing: fakeWordParsing()),
+                    Word(text: "ἦν", lexicalForm: "be", parsing: fakeWordParsing()),
+                    Word(text: "πρὸς", lexicalForm: "πρὸς", parsing: fakeWordParsing()),
+                    Word(text: "τὸν", lexicalForm: "ὁ", parsing: fakeWordParsing()),
+                    Word(text: "θεόν,", lexicalForm: "θεός", parsing: fakeWordParsing()),
+                    Word(text: "καὶ", lexicalForm: "καὶ", parsing: fakeWordParsing()),
+                    Word(text: "θεὸς", lexicalForm: "θεὸς", parsing: fakeWordParsing()),
+                    Word(text: "ἦν", lexicalForm: "be", parsing: fakeWordParsing()),
+                    Word(text: "λόγος.", lexicalForm: "λόγος", parsing: fakeWordParsing()),
                 ]
             ),
             
@@ -34,43 +45,15 @@ class FakeVerseDataSourceImpl: VerseDataSource {
                     verse: 2
                 ),
                 words: [
-                    Word(text: "This", lexicalForm: "this", parsing: fakeWordParsing()),
-                    Word(text: "is", lexicalForm: "be", parsing: fakeWordParsing()),
-                    Word(text: "the", lexicalForm: "the", parsing: fakeWordParsing()),
-                    Word(text: "second", lexicalForm: "two", parsing: fakeWordParsing()),
-                    Word(text: "verse.", lexicalForm: "verse", parsing: fakeWordParsing())
+                        Word(text: "οὗτος", lexicalForm: "οὗτος", parsing: fakeWordParsing()),
+                        Word(text: "ἦν", lexicalForm: "be", parsing: fakeWordParsing()),
+                        Word(text: "ἐν", lexicalForm: "ἐν", parsing: fakeWordParsing()),
+                        Word(text: "ἀρχῇ", lexicalForm: "ἀρχῇ", parsing: fakeWordParsing()),
+                        Word(text: "πρὸς", lexicalForm: "πρὸς", parsing: fakeWordParsing()),
+                        Word(text: "τὸν", lexicalForm: "ὁ", parsing: fakeWordParsing()),
+                        Word(text: "θεόν.", lexicalForm: "θεός", parsing: fakeWordParsing()),
                 ]
-            ),
-            
-            Verse(
-                verseRef: VerseRef(
-                    book: Book(0),
-                    chapter: 1,
-                    verse: 3
-                ),
-                words: [
-                    Word(text: "This", lexicalForm: "this", parsing: fakeWordParsing()),
-                    Word(text: "is", lexicalForm: "be", parsing: fakeWordParsing()),
-                    Word(text: "the", lexicalForm: "the", parsing: fakeWordParsing()),
-                    Word(text: "third", lexicalForm: "three", parsing: fakeWordParsing()),
-                    Word(text: "verse.", lexicalForm: "verse", parsing: fakeWordParsing())
-                ]
-            ),
-            
-            Verse(
-                verseRef: VerseRef(
-                    book: Book(0),
-                    chapter: 1,
-                    verse: 4
-                ),
-                words: [
-                    Word(text: "This", lexicalForm: "this", parsing: fakeWordParsing()),
-                    Word(text: "is", lexicalForm: "be", parsing: fakeWordParsing()),
-                    Word(text: "the", lexicalForm: "the", parsing: fakeWordParsing()),
-                    Word(text: "fourth", lexicalForm: "four", parsing: fakeWordParsing()),
-                    Word(text: "verse.", lexicalForm: "verse", parsing: fakeWordParsing())
-                ]
-            ),
+            )
         ]
     }
 

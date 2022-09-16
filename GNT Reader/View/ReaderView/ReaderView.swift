@@ -39,25 +39,29 @@ struct VersesTextView: View {
             Text("Tapped word: \(tappedWord)").padding()
             
             verses.map { verse in
-                Text("\(verse.verseRef.verse!)\u{00a0}").superscript() +
-
-                verse.words.map { word in
-                    getWordText(word.text)
-                }.reduce(Text(""), +)
-
-            }.reduce(Text(""), +)
-                .tint(.white)
+                getVerseText(verse)
+            }
+            .reduce(Text(""), +)
+            .tint(.white)
         }
         .onOpenURL { url in
             let wordIndex = url.absoluteString.index(url.absoluteString.startIndex, offsetBy: 4)
-            tappedWord = String(url.absoluteString[wordIndex...])
+            tappedWord = base64decode(String(url.absoluteString[wordIndex...].utf8)!)!
         }
     }
 
-    private func getWordText(_ word: String) -> Text {
-        let word = try! AttributedString(markdown: "[\(word)](gnt:\(word))")
-        return Text("\(word) ")
-            .regularText()
+    private func getVerseText(_ verse: Verse) -> Text {
+        var text = Text("\(verse.verseRef.verse!)\u{00a0}").superscript()
+        text = text + verse.words.map { word in
+            getWordText(word)
+        }.reduce(Text(""), +)
+        return text
+    }
+
+    private func getWordText(_ word: Word) -> Text {
+        let url = "gnt:\(base64encode(word.lexicalForm)!)"
+        let markdown = try! AttributedString(markdown: "[\(word.text)](\(url))")
+        return Text("\(markdown) ").regularText()
     }
 }
 

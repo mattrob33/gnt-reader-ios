@@ -17,3 +17,20 @@ extension StringProtocol {
     
     func trim() -> String { self.trimmingCharacters(in: .whitespacesAndNewlines) }
 }
+
+func base64encode(_ str: String) -> String? {
+    let utf8str = str.data(using: .utf8)
+    if let base64Encoded = utf8str?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0)) {
+        return base64Encoded
+    }
+    return nil
+}
+
+func base64decode(_ encoded: String) -> String? {
+    if let base64Decoded = Data(base64Encoded: encoded, options: Data.Base64DecodingOptions(rawValue: 0))
+        .map({ String(data: $0, encoding: .utf8) }) {
+            return base64Decoded ?? ""
+        }
+    
+    return nil
+}
