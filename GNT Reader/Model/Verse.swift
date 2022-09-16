@@ -10,17 +10,19 @@ import Foundation
 struct Verse {
     let verseRef: VerseRef
     let words: [Word]
+    let text: String
 
     public init(verseRef: VerseRef, words: [Word]) {
         self.verseRef = verseRef
         self.words = words
+
+        text = {
+            var text = ""
+            for word in words {
+                text += "\(word.text) "
+            }
+            return text.trim()
+        }()
     }
 
-    private(set) lazy var text: String = {
-        var text = ""
-        for word in words {
-            text += "\(word.text) "
-        }
-        return text.trim()
-    }()
 }

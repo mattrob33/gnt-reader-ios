@@ -12,7 +12,7 @@ struct Book {
     let abbrv: String
     let title: String
 
-    init(num: Int) {
+    init(_ num: Int) {
         self.num = num
         abbrv = Book.abbrvs[num]
         title = Book.titles[num]

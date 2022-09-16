@@ -23,6 +23,8 @@
 		D87AB15026D2E1BD0026A857 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB14F26D2E1BD0026A857 /* Word.swift */; };
 		D87AB15226D2E1E50026A857 /* WordParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB15126D2E1E50026A857 /* WordParsing.swift */; };
 		D87AB15526D2F7B70026A857 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB15426D2F7B70026A857 /* StringExtensions.swift */; };
+		D87AB15726D30D880026A857 /* FakeVerseDataSourceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB15626D30D880026A857 /* FakeVerseDataSourceImpl.swift */; };
+		D87AB15A26D312CC0026A857 /* ReaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB15926D312CC0026A857 /* ReaderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		D87AB14F26D2E1BD0026A857 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		D87AB15126D2E1E50026A857 /* WordParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordParsing.swift; sourceTree = "<group>"; };
 		D87AB15426D2F7B70026A857 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		D87AB15626D30D880026A857 /* FakeVerseDataSourceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeVerseDataSourceImpl.swift; sourceTree = "<group>"; };
+		D87AB15926D312CC0026A857 /* ReaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +163,7 @@
 		D87AB14226D2DF4B0026A857 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D87AB14526D2DFE40026A857 /* ReaderView.swift */,
+				D87AB15826D312B90026A857 /* ReaderView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -168,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				D87AB14726D2E0390026A857 /* VerseDataSource.swift */,
+				D87AB15626D30D880026A857 /* FakeVerseDataSourceImpl.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -190,6 +195,15 @@
 				D87AB15426D2F7B70026A857 /* StringExtensions.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		D87AB15826D312B90026A857 /* ReaderView */ = {
+			isa = PBXGroup;
+			children = (
+				D87AB14526D2DFE40026A857 /* ReaderView.swift */,
+				D87AB15926D312CC0026A857 /* ReaderViewModel.swift */,
+			);
+			path = ReaderView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,8 +338,10 @@
 				D87AB15526D2F7B70026A857 /* StringExtensions.swift in Sources */,
 				D87AB14C26D2E0AA0026A857 /* Book.swift in Sources */,
 				D87AB14826D2E0390026A857 /* VerseDataSource.swift in Sources */,
+				D87AB15A26D312CC0026A857 /* ReaderViewModel.swift in Sources */,
 				D87AB11C26D2DECC0026A857 /* Persistence.swift in Sources */,
 				D87AB14E26D2E1B00026A857 /* Verse.swift in Sources */,
+				D87AB15726D30D880026A857 /* FakeVerseDataSourceImpl.swift in Sources */,
 				D87AB14626D2DFE40026A857 /* ReaderView.swift in Sources */,
 				D87AB14A26D2E06A0026A857 /* VerseRef.swift in Sources */,
 				D87AB11526D2DECC0026A857 /* ContentView.swift in Sources */,
