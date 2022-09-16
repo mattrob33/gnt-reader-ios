@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,9 @@
 		D87AB15526D2F7B70026A857 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB15426D2F7B70026A857 /* StringExtensions.swift */; };
 		D87AB15726D30D880026A857 /* FakeVerseDataSourceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB15626D30D880026A857 /* FakeVerseDataSourceImpl.swift */; };
 		D87AB15A26D312CC0026A857 /* ReaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB15926D312CC0026A857 /* ReaderViewModel.swift */; };
+		D8D8614728D4EB1300735875 /* SqliteVerseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D8614628D4EB1300735875 /* SqliteVerseDataSource.swift */; };
+		D8D8614A28D4EC6000735875 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = D8D8614928D4EC6000735875 /* SQLite */; };
+		D8D8614C28D4EE6B00735875 /* gnt-app.db in Resources */ = {isa = PBXBuildFile; fileRef = D8D8614B28D4EE6B00735875 /* gnt-app.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,8 @@
 		D87AB15426D2F7B70026A857 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		D87AB15626D30D880026A857 /* FakeVerseDataSourceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeVerseDataSourceImpl.swift; sourceTree = "<group>"; };
 		D87AB15926D312CC0026A857 /* ReaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderViewModel.swift; sourceTree = "<group>"; };
+		D8D8614628D4EB1300735875 /* SqliteVerseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteVerseDataSource.swift; sourceTree = "<group>"; };
+		D8D8614B28D4EE6B00735875 /* gnt-app.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gnt-app.db"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8D8614A28D4EC6000735875 /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,8 +174,10 @@
 		D87AB14326D2DF600026A857 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D8D8614B28D4EE6B00735875 /* gnt-app.db */,
 				D87AB14726D2E0390026A857 /* VerseDataSource.swift */,
 				D87AB15626D30D880026A857 /* FakeVerseDataSourceImpl.swift */,
+				D8D8614628D4EB1300735875 /* SqliteVerseDataSource.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -219,6 +227,9 @@
 			dependencies = (
 			);
 			name = "GNT Reader";
+			packageProductDependencies = (
+				D8D8614928D4EC6000735875 /* SQLite */,
+			);
 			productName = "GNT Reader";
 			productReference = D87AB10F26D2DECC0026A857 /* GNT Reader.app */;
 			productType = "com.apple.product-type.application";
@@ -290,6 +301,9 @@
 				Base,
 			);
 			mainGroup = D87AB10626D2DECB0026A857;
+			packageReferences = (
+				D8D8614828D4EC6000735875 /* XCRemoteSwiftPackageReference "SQLite" */,
+			);
 			productRefGroup = D87AB11026D2DECC0026A857 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -308,6 +322,7 @@
 			files = (
 				D87AB11A26D2DECC0026A857 /* Preview Assets.xcassets in Resources */,
 				D87AB11726D2DECC0026A857 /* Assets.xcassets in Resources */,
+				D8D8614C28D4EE6B00735875 /* gnt-app.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +357,7 @@
 				D87AB14626D2DFE40026A857 /* ReaderView.swift in Sources */,
 				D87AB14A26D2E06A0026A857 /* VerseRef.swift in Sources */,
 				D87AB15026D2E1BD0026A857 /* Word.swift in Sources */,
+				D8D8614728D4EB1300735875 /* SqliteVerseDataSource.swift in Sources */,
 				D87AB15226D2E1E50026A857 /* WordParsing.swift in Sources */,
 				D87AB11F26D2DECC0026A857 /* GNT_Reader.xcdatamodeld in Sources */,
 				D87AB11326D2DECC0026A857 /* GNT_ReaderApp.swift in Sources */,
@@ -664,6 +680,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D8D8614828D4EC6000735875 /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D8D8614928D4EC6000735875 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D8D8614828D4EC6000735875 /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D87AB11D26D2DECC0026A857 /* GNT_Reader.xcdatamodeld */ = {

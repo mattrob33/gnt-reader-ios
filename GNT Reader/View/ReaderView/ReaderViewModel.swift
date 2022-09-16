@@ -16,7 +16,7 @@ extension ReaderView {
         private let verseDataSource: VerseDataSource
         
         init() {
-            verseDataSource = FakeVerseDataSourceImpl()
+            verseDataSource = SqliteVerseDataSource()
         }
 
         func loadVersesForChapter(book: Book, chapter: Int) {

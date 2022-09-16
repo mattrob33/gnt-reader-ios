@@ -36,20 +36,30 @@ struct VersesTextView: View {
     
     var body: some View {
         VStack {
-            Text("Tapped word: \(tappedWord)").padding()
+            Text(tappedWord).padding()
+            getVersesText(verses)
+        }
+        .onOpenURL { url in
+            let wordIndex = url.absoluteString.index(url.absoluteString.startIndex, offsetBy: 4)
+            let payload = String(url.absoluteString[wordIndex...].utf8)!
             
+            let parts = payload.components(separatedBy: "/")
+            let lex = base64decode(parts[0]) ?? "Unknown"
+            let parsing = base64decode(parts[1]) ?? "Unknown"
+            tappedWord = "\(lex)\n\(parsing)"
+        }
+    }
+
+    private func getVersesText(_ verses: [Verse]) -> some View {
+        return ScrollView {
             verses.map { verse in
                 getVerseText(verse)
             }
             .reduce(Text(""), +)
             .tint(.white)
         }
-        .onOpenURL { url in
-            let wordIndex = url.absoluteString.index(url.absoluteString.startIndex, offsetBy: 4)
-            tappedWord = base64decode(String(url.absoluteString[wordIndex...].utf8)!)!
-        }
     }
-
+    
     private func getVerseText(_ verse: Verse) -> Text {
         var text = Text("\(verse.verseRef.verse!)\u{00a0}").superscript()
         text = text + verse.words.map { word in
@@ -59,7 +69,7 @@ struct VersesTextView: View {
     }
 
     private func getWordText(_ word: Word) -> Text {
-        let url = "gnt:\(base64encode(word.lexicalForm)!)"
+        let url = "gnt:\(base64encode(word.lexicalForm)!)/\(base64encode(word.parsing.humanReadable)!)"
         let markdown = try! AttributedString(markdown: "[\(word.text)](\(url))")
         return Text("\(markdown) ").regularText()
     }
