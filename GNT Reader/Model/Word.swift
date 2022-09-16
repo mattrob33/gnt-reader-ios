@@ -11,4 +11,6 @@ struct Word {
     let text: String
     let lexicalForm: String
     let parsing: WordParsing
+    
+    var wordId: Int = -1
 }

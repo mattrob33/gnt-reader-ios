@@ -10,15 +10,18 @@ import SwiftUI
 
 struct ReaderView: View {
 
-    @ObservedObject var viewModel: ViewModel = ViewModel()
+    @ObservedObject var viewModel: ReaderViewModel = ReaderViewModel()
 
     var body: some View {
         Group {
-            VersesTextView(verses: self.viewModel.verses)
+            VersesTextView(
+                viewModel: viewModel,
+                verses: self.viewModel.verses
+            )
         }
         .padding()
         .onAppear {
-            self.viewModel.loadVersesForChapter(book: Book(0), chapter: 1)
+            self.viewModel.loadVersesForChapter(book: Book(3), chapter: 1)
         }
     }
 }
@@ -30,6 +33,9 @@ struct ReaderView_Previews: PreviewProvider {
 }
 
 struct VersesTextView: View {
+    
+    var viewModel: ReaderViewModel
+    
     var verses: [Verse]
     
     @State private var tappedWord: String = "[none]"
@@ -41,12 +47,10 @@ struct VersesTextView: View {
         }
         .onOpenURL { url in
             let wordIndex = url.absoluteString.index(url.absoluteString.startIndex, offsetBy: 4)
-            let payload = String(url.absoluteString[wordIndex...].utf8)!
+            let wordId = String(url.absoluteString[wordIndex...].utf8)!
             
-            let parts = payload.components(separatedBy: "/")
-            let lex = base64decode(parts[0]) ?? "Unknown"
-            let parsing = base64decode(parts[1]) ?? "Unknown"
-            tappedWord = "\(lex)\n\(parsing)"
+            let word = viewModel.getWord(byId: Int(wordId)!)!
+            tappedWord = "\(word.lexicalForm)\n\(word.parsing.humanReadable)"
         }
     }
 
@@ -69,7 +73,7 @@ struct VersesTextView: View {
     }
 
     private func getWordText(_ word: Word) -> Text {
-        let url = "gnt:\(base64encode(word.lexicalForm)!)/\(base64encode(word.parsing.humanReadable)!)"
+        let url = "gnt:\(word.wordId)"
         let markdown = try! AttributedString(markdown: "[\(word.text)](\(url))")
         return Text("\(markdown) ").regularText()
     }
