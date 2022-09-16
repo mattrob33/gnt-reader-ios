@@ -32,15 +32,32 @@ struct ReaderView_Previews: PreviewProvider {
 struct VersesTextView: View {
     var verses: [Verse]
     
+    @State private var tappedWord: String = "[none]"
+    
     var body: some View {
-        verses.map { verse in
-            Text("\(verse.verseRef.verse!)\u{00a0}").superscript() +
+        VStack {
+            Text("Tapped word: \(tappedWord)").padding()
+            
+            verses.map { verse in
+                Text("\(verse.verseRef.verse!)\u{00a0}").superscript() +
 
-            verse.words.map { word in
-                Text("\(word.text) ").regularText()
+                verse.words.map { word in
+                    getWordText(word.text)
+                }.reduce(Text(""), +)
+
             }.reduce(Text(""), +)
+                .tint(.white)
+        }
+        .onOpenURL { url in
+            let wordIndex = url.absoluteString.index(url.absoluteString.startIndex, offsetBy: 4)
+            tappedWord = String(url.absoluteString[wordIndex...])
+        }
+    }
 
-        }.reduce(Text(""), +)
+    private func getWordText(_ word: String) -> Text {
+        let word = try! AttributedString(markdown: "[\(word)](gnt:\(word))")
+        return Text("\(word) ")
+            .regularText()
     }
 }
 

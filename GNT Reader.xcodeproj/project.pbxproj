@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D87AB11326D2DECC0026A857 /* GNT_ReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB11226D2DECC0026A857 /* GNT_ReaderApp.swift */; };
-		D87AB11526D2DECC0026A857 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB11426D2DECC0026A857 /* ContentView.swift */; };
 		D87AB11726D2DECC0026A857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87AB11626D2DECC0026A857 /* Assets.xcassets */; };
 		D87AB11A26D2DECC0026A857 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87AB11926D2DECC0026A857 /* Preview Assets.xcassets */; };
 		D87AB11C26D2DECC0026A857 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB11B26D2DECC0026A857 /* Persistence.swift */; };
@@ -47,7 +46,6 @@
 /* Begin PBXFileReference section */
 		D87AB10F26D2DECC0026A857 /* GNT Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GNT Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87AB11226D2DECC0026A857 /* GNT_ReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNT_ReaderApp.swift; sourceTree = "<group>"; };
-		D87AB11426D2DECC0026A857 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D87AB11626D2DECC0026A857 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D87AB11926D2DECC0026A857 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D87AB11B26D2DECC0026A857 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				D87AB14326D2DF600026A857 /* Data */,
 				D87AB14226D2DF4B0026A857 /* View */,
 				D87AB11226D2DECC0026A857 /* GNT_ReaderApp.swift */,
-				D87AB11426D2DECC0026A857 /* ContentView.swift */,
 				D87AB11626D2DECC0026A857 /* Assets.xcassets */,
 				D87AB11B26D2DECC0026A857 /* Persistence.swift */,
 				D87AB12026D2DECC0026A857 /* Info.plist */,
@@ -344,7 +341,6 @@
 				D87AB15726D30D880026A857 /* FakeVerseDataSourceImpl.swift in Sources */,
 				D87AB14626D2DFE40026A857 /* ReaderView.swift in Sources */,
 				D87AB14A26D2E06A0026A857 /* VerseRef.swift in Sources */,
-				D87AB11526D2DECC0026A857 /* ContentView.swift in Sources */,
 				D87AB15026D2E1BD0026A857 /* Word.swift in Sources */,
 				D87AB15226D2E1E50026A857 /* WordParsing.swift in Sources */,
 				D87AB11F26D2DECC0026A857 /* GNT_Reader.xcdatamodeld in Sources */,
@@ -510,7 +506,7 @@
 				DEVELOPMENT_TEAM = YUCN7Q2M34;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "GNT Reader/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,7 +528,7 @@
 				DEVELOPMENT_TEAM = YUCN7Q2M34;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "GNT Reader/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
