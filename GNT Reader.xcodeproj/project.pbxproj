@@ -574,11 +574,13 @@
 				DEVELOPMENT_TEAM = YUCN7Q2M34;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "GNT Reader/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "GNT Reader";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mattrobertson.GNT-Reader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -596,11 +598,13 @@
 				DEVELOPMENT_TEAM = YUCN7Q2M34;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "GNT Reader/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "GNT Reader";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mattrobertson.GNT-Reader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

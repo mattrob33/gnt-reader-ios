@@ -17,4 +17,17 @@ struct VerseRef {
         self.chapter = chapter
         self.verse = verse
     }
+    
+    func serialize() -> String {
+        return "\(book.num)_\(chapter)_\(verse ?? 1)"
+    }
+    
+    static func deserialize(from serialized: String) -> VerseRef {
+        let parts = serialized.components(separatedBy: "_")
+        return VerseRef(
+            book: Book(Int(parts[0])!),
+            chapter: Int(parts[1])!,
+            verse: Int(parts[2])!
+        )
+    }
 }

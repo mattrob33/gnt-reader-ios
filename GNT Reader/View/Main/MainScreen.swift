@@ -69,13 +69,13 @@ private struct BottomBar: View {
             BottomBarDivider()
             
             HStack(alignment: .center) {
-                BottomBarIcon(systemName: "list.bullet", onTap: onTapContents)
+                ContentsIcon(onTap: onTapContents)
                 Spacer()
-                BottomBarIcon(systemName: "a.circle", onTap: onTapVocab)
+                VocabIcon(onTap: onTapVocab)
                 Spacer()
-                BottomBarIcon(systemName: "speaker.wave.2.fill", onTap: onTapAudio)
+                AudioIcon(onTap: onTapAudio)
                 Spacer()
-                BottomBarIcon(systemName: "gearshape.fill", onTap: onTapSettings)
+                SettingsIcon(onTap: onTapSettings)
             }
             .padding(.horizontal, 40)
             .frame(maxWidth: .infinity, minHeight: 50)
@@ -84,18 +84,65 @@ private struct BottomBar: View {
     }
 }
 
+private struct ContentsIcon: View {
+    
+    var onTap: () -> ()
+    
+    var body: some View {
+        BottomBarIcon(
+            systemName: "list.bullet",
+            width: 20,
+            height: 24,
+            aspectRatio: 1.25,
+            onTap: onTap
+        )
+    }
+}
+
+private struct VocabIcon: View {
+    
+    var onTap: () -> ()
+    
+    var body: some View {
+        BottomBarIcon(systemName: "a.circle", onTap: onTap)
+    }
+}
+
+private struct AudioIcon: View {
+    
+    var onTap: () -> ()
+    
+    var body: some View {
+        BottomBarIcon(systemName: "speaker.wave.2.fill", onTap: onTap)
+    }
+}
+
+private struct SettingsIcon: View {
+    
+    var onTap: () -> ()
+    
+    var body: some View {
+        BottomBarIcon(systemName: "gearshape.fill", onTap: onTap)
+    }
+}
+
 private struct BottomBarIcon: View {
     
     var systemName: String
+
+    var width: CGFloat = 20
+    var height: CGFloat = 20
+    var aspectRatio: CGFloat = 1
+    
     var onTap: () -> ()
     
     var body: some View {
         Image(systemName: systemName)
             .resizable()
-            .aspectRatio(1, contentMode: .fit)
+            .aspectRatio(aspectRatio, contentMode: .fit)
             .frame(
-                width: 20,
-                height: 20
+                width: width,
+                height: height
             )
             .onTapGesture {
                 onTap()

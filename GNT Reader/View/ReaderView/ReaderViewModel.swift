@@ -21,11 +21,13 @@ class ReaderViewModel: ObservableObject {
     
     init() {
         verseDataSource = SqliteVerseDataSource()
+        verseRef = VerseRef.deserialize(from: UserDefaults().string(forKey: "verse_ref") ?? "0_1_1")
         loadVersesForChapter(ref: verseRef)
     }
 
     func loadVersesForChapter(ref: VerseRef) {
         verseRef = ref
+        UserDefaults().set(ref.serialize(), forKey: "verse_ref")
 
         verses = verseDataSource.getVersesForChapter(book: ref.book, chapter: ref.chapter).map { verse in
             Verse(
