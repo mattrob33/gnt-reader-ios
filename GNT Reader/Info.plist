@@ -61,8 +61,8 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>fonts/Cardo.ttf</string>
-		<string>fonts/Cardo-Bold.ttf</string>
+		<string>Cardo-Regular.ttf</string>
+		<string>GentiumBookPlus-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

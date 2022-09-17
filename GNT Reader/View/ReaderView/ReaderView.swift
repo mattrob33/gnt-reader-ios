@@ -11,24 +11,24 @@ import SwiftUI
 struct ReaderView: View {
 
     @ObservedObject var viewModel: ReaderViewModel = ReaderViewModel()
+    
+    var onTapWord: (Word) -> ()
 
     var body: some View {
         Group {
             VersesTextView(
                 viewModel: viewModel,
-                verses: self.viewModel.verses
+                verses: self.viewModel.verses,
+                onTapWord: onTapWord
             )
         }
         .padding()
-        .onAppear {
-            self.viewModel.loadVersesForChapter(book: Book(3), chapter: 1)
-        }
     }
 }
 
 struct ReaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ReaderView()
+        ReaderView(onTapWord: { word in})
     }
 }
 
@@ -38,47 +38,47 @@ struct VersesTextView: View {
     
     var verses: [Verse]
     
-    @State private var tappedWord: String = "[none]"
+    var onTapWord: (Word) -> ()
     
     var body: some View {
         VStack {
-            Text(tappedWord)
-                .padding()
-                .font(Font.custom("Cardo", size: 18))
-            getVersesText(verses)
+            getChapterText(verses, forRef: viewModel.verseRef)
         }
         .onOpenURL { url in
             let wordIndex = url.absoluteString.index(url.absoluteString.startIndex, offsetBy: 4)
             let wordId = String(url.absoluteString[wordIndex...].utf8)!
             
             let word = viewModel.getWord(byId: Int(wordId)!)!
-            tappedWord = "\(word.lexicalForm)\n\(word.parsing.humanReadable)"
+            onTapWord(word)
         }
     }
 
-    private func getVersesText(_ verses: [Verse]) -> some View {
+    private func getChapterText(_ verses: [Verse], forRef ref: VerseRef) -> some View {
+        var versesText = Text("")
+        for verse in verses {
+            versesText = versesText + getVerseText(verse)
+        }
+        
         return ScrollView {
-            verses.map { verse in
-                getVerseText(verse)
-            }
-            .reduce(Text(""), +)
-            .tint(.white)
+            versesText
+                .font(.custom("Cardo", size: 22))
+                .lineSpacing(12)
+                .tint(.white)
         }
     }
     
     private func getVerseText(_ verse: Verse) -> Text {
         var text = Text("\(verse.verseRef.verse!)\u{00a0}").superscript()
-        text = text + verse.words.map { word in
-            getWordText(word)
-        }.reduce(Text(""), +)
+        for word in verse.words {
+            text = text + getWordText(word)
+        }
         return text
     }
 
     private func getWordText(_ word: Word) -> Text {
         let url = "gnt:\(word.wordId)"
         let markdown = try! AttributedString(markdown: "[\(word.text)](\(url))")
-        return Text("\(markdown) ").regularText()
-            .font(Font.custom("Cardo", size: 22))
+        return Text("\(markdown) ")
     }
 }
 

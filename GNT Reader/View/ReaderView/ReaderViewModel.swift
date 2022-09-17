@@ -9,6 +9,8 @@ import Foundation
 
 class ReaderViewModel: ObservableObject {
 
+    @Published private(set) var verseRef: VerseRef = VerseRef(book: Book(0), chapter: 1, verse: 1)
+    
     @Published private(set) var verses: [Verse] = []
     
     private var wordMap: [ Int : Word ] = [:]
@@ -19,10 +21,11 @@ class ReaderViewModel: ObservableObject {
     
     init() {
         verseDataSource = SqliteVerseDataSource()
+        loadVersesForChapter(ref: verseRef)
     }
 
-    func loadVersesForChapter(book: Book, chapter: Int) {
-        verses = verseDataSource.getVersesForChapter(book: book, chapter: chapter).map { verse in
+    func loadVersesForChapter(ref: VerseRef) {
+        verses = verseDataSource.getVersesForChapter(book: ref.book, chapter: ref.chapter).map { verse in
             Verse(
                 verseRef: verse.verseRef,
                 words: verse.words.map { word in
