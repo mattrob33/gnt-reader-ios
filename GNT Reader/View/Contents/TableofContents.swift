@@ -123,18 +123,18 @@ struct TableofContentsChapter: View {
                         }
                 }
                 .padding()
-
-                ForEach(1...verseCounts[book.num].count, id: \.self) { chapter in
-                    Text("\(chapter)")
-                        .font(.system(size: 20, design: .serif))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.vertical, 4)
-                        .padding(.leading, 20)
-                        .onTapGesture {
-                            onVerseRefSelected(
-                                VerseRef(book: book, chapter: chapter, verse: 1)
-                            )
-                        }
+                
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 50, maximum: 80))]) {
+                    ForEach(1...verseCounts[book.num].count, id: \.self) { chapter in
+                        Text("\(chapter)")
+                            .font(.system(size: 20, design: .serif))
+                            .padding()
+                            .onTapGesture {
+                                onVerseRefSelected(
+                                    VerseRef(book: book, chapter: chapter, verse: 1)
+                                )
+                            }
+                    }
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
