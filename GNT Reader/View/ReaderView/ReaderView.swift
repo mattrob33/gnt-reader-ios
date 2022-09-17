@@ -55,15 +55,25 @@ struct VersesTextView: View {
 
     private func getChapterText(_ verses: [Verse], forRef ref: VerseRef) -> some View {
         var versesText = Text("")
+        
         for verse in verses {
             versesText = versesText + getVerseText(verse)
         }
         
         return ScrollView {
-            versesText
-                .font(.custom("Cardo", size: 22))
-                .lineSpacing(12)
-                .tint(.white)
+            VStack {
+                if ref.chapter == 1 {
+                    Text("\n\(bookTitles[ref.book.num])\n")
+                        .font(.custom("Cardo", size: 28))
+                        .lineSpacing(24)
+                        
+                }
+
+                versesText
+                    .font(.custom("Cardo", size: 22))
+                    .lineSpacing(12)
+                    .tint(.white)
+            }
         }
     }
     

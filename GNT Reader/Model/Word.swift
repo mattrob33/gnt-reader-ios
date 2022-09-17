@@ -14,3 +14,7 @@ struct Word {
     
     var wordId: Int = -1
 }
+
+extension Word: Identifiable {
+    public var id: String { String(wordId) }
+}

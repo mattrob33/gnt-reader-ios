@@ -31,6 +31,7 @@
 		D8FE7E7E28D5166200996CEC /* VerseRefUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E7D28D5166200996CEC /* VerseRefUtils.swift */; };
 		D8FE7E8328D51AA100996CEC /* Cardo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8FE7E8128D51AA100996CEC /* Cardo-Regular.ttf */; };
 		D8FE7E8528D574CF00996CEC /* GentiumBookPlus-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8FE7E8428D574CF00996CEC /* GentiumBookPlus-Regular.ttf */; };
+		D8FE7E8828D57D3400996CEC /* WordInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E8728D57D3400996CEC /* WordInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		D8FE7E7D28D5166200996CEC /* VerseRefUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseRefUtils.swift; sourceTree = "<group>"; };
 		D8FE7E8128D51AA100996CEC /* Cardo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cardo-Regular.ttf"; sourceTree = "<group>"; };
 		D8FE7E8428D574CF00996CEC /* GentiumBookPlus-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GentiumBookPlus-Regular.ttf"; sourceTree = "<group>"; };
+		D8FE7E8728D57D3400996CEC /* WordInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 		D87AB14226D2DF4B0026A857 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D8FE7E8628D57D2600996CEC /* WordInfoView */,
 				D8FE7E7A28D50A2100996CEC /* Contents */,
 				D8FE7E7528D5067500996CEC /* Main */,
 				D87AB15826D312B90026A857 /* ReaderView */,
@@ -245,6 +248,14 @@
 				D8FE7E8128D51AA100996CEC /* Cardo-Regular.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		D8FE7E8628D57D2600996CEC /* WordInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				D8FE7E8728D57D3400996CEC /* WordInfoView.swift */,
+			);
+			path = WordInfoView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,6 +412,7 @@
 				D8D8614728D4EB1300735875 /* SqliteVerseDataSource.swift in Sources */,
 				D87AB15226D2E1E50026A857 /* WordParsing.swift in Sources */,
 				D87AB11326D2DECC0026A857 /* GNT_ReaderApp.swift in Sources */,
+				D8FE7E8828D57D3400996CEC /* WordInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

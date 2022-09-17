@@ -25,6 +25,8 @@ class ReaderViewModel: ObservableObject {
     }
 
     func loadVersesForChapter(ref: VerseRef) {
+        verseRef = ref
+
         verses = verseDataSource.getVersesForChapter(book: ref.book, chapter: ref.chapter).map { verse in
             Verse(
                 verseRef: verse.verseRef,

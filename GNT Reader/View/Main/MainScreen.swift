@@ -12,7 +12,6 @@ struct MainScreen: View {
     
     @State private var isShowingContents: Bool = false
     
-    @State private var isShowingWordInfo: Bool = false
     @State private var wordInfoDetent = PresentationDetent.medium
     @State private var selectedWord: Word? = nil
 
@@ -25,7 +24,6 @@ struct MainScreen: View {
                 viewModel: readerViewModel,
                 onTapWord: { word in
                     selectedWord = word
-                    isShowingWordInfo = true
                 }
             )
             
@@ -49,29 +47,12 @@ struct MainScreen: View {
                 }
             )
         }
-        .sheet(isPresented: $isShowingWordInfo) {
-            VStack(alignment: .leading) {
-                if let selectedWord = selectedWord {
-                    Text(selectedWord.lexicalForm)
-                        .font(.custom("Cardo", size: 22))
-                    Text(selectedWord.parsing.humanReadable)
-                        .font(.system(size: 18, design: .serif))
-                    
-                    Divider()
-                } else {
-                    Text("No word selected")
-                }
-            }
-            .frame(
-                maxWidth: .infinity,
-                maxHeight: .infinity,
-                alignment: .topLeading
-            )
-            .padding(16)
-            .presentationDetents(
-                [.medium, .large],
-                selection: $wordInfoDetent
-            )
+        .sheet(item: $selectedWord) { selectedWord in
+            WordInfoView(selectedWord: selectedWord)
+                .presentationDetents(
+                    [.medium, .large],
+                    selection: $wordInfoDetent
+                )
         }
     }
 }
