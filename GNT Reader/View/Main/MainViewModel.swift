@@ -9,4 +9,10 @@ import Foundation
 
 class MainViewModel: ObservableObject {
     
+    private let wordInfoDataSource = SqliteWordInfoDataSource()
+    
+    func getWordInfo(for lex: String) -> WordInfo? {
+        return wordInfoDataSource.getWordInfo(for: lex)
+    }
+    
 }

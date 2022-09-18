@@ -48,7 +48,8 @@ struct MainScreen: View {
             )
         }
         .sheet(item: $selectedWord) { selectedWord in
-            WordInfoView(selectedWord: selectedWord)
+            let wordInfo = mainViewModel.getWordInfo(for: selectedWord.lexicalForm)
+            WordInfoView(selectedWord: selectedWord, wordInfo: wordInfo)
                 .presentationDetents(
                     [.medium, .large],
                     selection: $wordInfoDetent
