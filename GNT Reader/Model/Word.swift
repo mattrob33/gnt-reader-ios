@@ -11,8 +11,8 @@ struct Word {
     let text: String
     let lexicalForm: String
     let parsing: WordParsing
-    
-    var wordId: Int = -1
+
+    var wordId: String = ""
 }
 
 extension Word: Identifiable {

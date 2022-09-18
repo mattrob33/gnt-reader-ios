@@ -30,4 +30,33 @@ struct VerseRef {
             verse: Int(parts[2])!
         )
     }
+    
+    static func fromAbsoluteChapterNum(_ absChapterNum: Int) -> VerseRef? {
+        var bookNum = 0
+
+        for bookEntry in 0..<verseCounts.count {
+            let bookArray = verseCounts[bookEntry]
+            if absChapterNum < bookNum + bookArray.count {
+                let book = Book(bookEntry)
+                let chapter = absChapterNum - bookNum + 1
+
+                return VerseRef(book: book, chapter: chapter, verse: 1)
+            }
+            else {
+                bookNum += bookArray.count
+            }
+        }
+        
+        return nil
+    }
+}
+
+func getAbsoluteChapterNumForBook(_ book: Book) -> Int {
+    var absChapterNum = 0
+
+    for i in 0..<book.num {
+        absChapterNum += verseCounts[i].count
+    }
+
+    return absChapterNum
 }

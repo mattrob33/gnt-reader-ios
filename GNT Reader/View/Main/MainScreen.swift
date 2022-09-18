@@ -18,10 +18,13 @@ struct MainScreen: View {
     @ObservedObject private var mainViewModel: MainViewModel = MainViewModel()
     @ObservedObject private var readerViewModel: ReaderViewModel = ReaderViewModel()
     
+    private var startingRef = VerseRef.deserialize(from: UserDefaults().string(forKey: "verse_ref") ?? "0_1_1")
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             ReaderView(
                 viewModel: readerViewModel,
+                absChapterNum: getAbsoluteChapterNumForBook(startingRef.book) + startingRef.chapter - 1,
                 onTapWord: { word in
                     selectedWord = word
                 }

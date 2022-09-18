@@ -11,9 +11,7 @@ class ReaderViewModel: ObservableObject {
 
     @Published private(set) var verseRef: VerseRef = VerseRef(book: Book(0), chapter: 1, verse: 1)
     
-    @Published private(set) var verses: [Verse] = []
-    
-    private var wordMap: [ Int : Word ] = [:]
+    private(set) var verses: [Verse] = []
 
     private let verseDataSource: VerseDataSource
     
@@ -26,10 +24,29 @@ class ReaderViewModel: ObservableObject {
     }
 
     func loadVersesForChapter(ref: VerseRef) {
-        verseRef = ref
-        UserDefaults().set(ref.serialize(), forKey: "verse_ref")
+//        verseRef = ref
+//        UserDefaults().set(ref.serialize(), forKey: "verse_ref")
+//
+//        verses = verseDataSource.getVersesForChapter(book: ref.book, chapter: ref.chapter).map { verse in
+//            Verse(
+//                verseRef: verse.verseRef,
+//                words: verse.words.map { word in
+//                    Word(
+//                        text: word.text,
+//                        lexicalForm: word.lexicalForm,
+//                        parsing: word.parsing,
+//                        wordId: "\(ref.book.num)_\(ref.chapter)_\(getAndIncrementWordId())"
+//                    )
+//                }
+//            )
+//        }
+    }
 
-        verses = verseDataSource.getVersesForChapter(book: ref.book, chapter: ref.chapter).map { verse in
+    func getVersesForChapter(ref: VerseRef) -> [Verse] {
+        
+        wordId = 0
+        
+        let chapter = verseDataSource.getVersesForChapter(book: ref.book, chapter: ref.chapter).map { verse in
             Verse(
                 verseRef: verse.verseRef,
                 words: verse.words.map { word in
@@ -37,14 +54,18 @@ class ReaderViewModel: ObservableObject {
                         text: word.text,
                         lexicalForm: word.lexicalForm,
                         parsing: word.parsing,
-                        wordId: getAndIncrementWordId()
+                        wordId: "\(verse.verseRef.book.num)_\(verse.verseRef.chapter)_\(getAndIncrementWordId())"
                     )
                 }
             )
         }
+        
+        verses += chapter
+        
+        return chapter
     }
 
-    func getWord(byId id: Int) -> Word? {
+    func getWord(byId id: String) -> Word? {
         for verse in verses {
             for word in verse.words {
                 if word.wordId == id {
