@@ -44,7 +44,7 @@ struct WordParsing {
                 var mood = String(codedParsing[5])
                 switch mood {
                     case "P": return "Ptc. " + tense + " " + voice + " " + String(codedParsing[6]) + String(codedParsing[8]) + String(codedParsing[7])
-                    case "N": return "Infv. $tense $voice"
+                    case "N": return "Infv. \(tense) \(voice)"
                     default:
                         switch mood {
                             case "I": mood = "Ind."

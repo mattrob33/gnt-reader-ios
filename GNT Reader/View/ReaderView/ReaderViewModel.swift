@@ -12,57 +12,63 @@ class ReaderViewModel: ObservableObject {
     @Published private(set) var verseRef: VerseRef = VerseRef(book: Book(0), chapter: 1, verse: 1)
     
     private(set) var verses: [Verse] = []
+    
+    private(set) var wordMap: [String : Word] = [:]
 
     private let verseDataSource: VerseDataSource
-    
-    private var wordId = 0
+
     
     init() {
         verseDataSource = SqliteVerseDataSource()
-        verseRef = VerseRef.deserialize(from: UserDefaults().string(forKey: "verse_ref") ?? "0_1_1")
     }
     
     func goToVerseRef(_ ref: VerseRef) {
         verseRef = ref
+        UserDefaults().set(ref.serialize(), forKey: "verse_ref")
     }
 
     func getVersesForChapter(ref: VerseRef) -> [Verse] {
+
+        var chapter: [Verse] = []
+
+        let chapterVerses = verseDataSource.getVersesForChapter(book: ref.book, chapter: ref.chapter)
         
-        wordId = 0
+        var wordIdNum = 0
         
-        let chapter = verseDataSource.getVersesForChapter(book: ref.book, chapter: ref.chapter).map { verse in
-            Verse(
-                verseRef: verse.verseRef,
-                words: verse.words.map { word in
-                    Word(
-                        text: word.text,
-                        lexicalForm: word.lexicalForm,
-                        parsing: word.parsing,
-                        wordId: "\(verse.verseRef.book.num)_\(verse.verseRef.chapter)_\(getAndIncrementWordId())"
-                    )
-                }
+        for verse in chapterVerses {
+            
+            var words: [Word] = []
+
+            for _word in verse.words {
+                let wordId = "\(verse.verseRef.book.num)_\(verse.verseRef.chapter)_\(wordIdNum)"
+
+                let word = Word(
+                    text: _word.text,
+                    lexicalForm: _word.lexicalForm,
+                    parsing: _word.parsing,
+                    wordId: wordId
+                )
+                
+                words.append(word)
+                wordMap[wordId] = word
+                wordIdNum += 1
+                
+                print("\(verse.verseRef.book.title) \(verse.verseRef.chapter):\(verse.verseRef.verse ?? 1)\(wordId)")
+            }
+            
+            chapter.append(
+                Verse(
+                    verseRef: verse.verseRef,
+                    words: words
+                )
             )
         }
-        
-        verses += chapter
         
         return chapter
     }
 
     func getWord(byId id: String) -> Word? {
-        for verse in verses {
-            for word in verse.words {
-                if word.wordId == id {
-                    return word
-                }
-            }
-        }
-        return nil
+        return wordMap[id]
     }
     
-    private func getAndIncrementWordId() -> Int {
-        let id = wordId
-        wordId += 1
-        return id
-    }
 }
