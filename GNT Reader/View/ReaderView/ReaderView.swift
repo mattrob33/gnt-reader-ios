@@ -12,12 +12,10 @@ struct ReaderView: View {
 
     @ObservedObject var viewModel: ReaderViewModel = ReaderViewModel()
     
-    var absChapterNum: Int
-    
     var onTapWord: (Word) -> ()
-
+    
     var body: some View {
-        ScrollViewReader { position in
+        ScrollViewReader { scrollState in
             ScrollView {
                 LazyVStack {
                     ForEach (0..<260, id: \.self) { i in
@@ -31,8 +29,9 @@ struct ReaderView: View {
                     }
                 }
             }
-            .onAppear {
-                position.scrollTo(absChapterNum, anchor: .top)
+            .onReceive(viewModel.$verseRef) { (ref) in
+                let absChapterNum = getAbsoluteChapterNumForBook(ref.book) + ref.chapter - 1
+                scrollState.scrollTo(absChapterNum, anchor: .top)
             }
         }
         .padding()
@@ -42,7 +41,6 @@ struct ReaderView: View {
 struct ReaderView_Previews: PreviewProvider {
     static var previews: some View {
         ReaderView(
-            absChapterNum: 0,
             onTapWord: { word in}
         )
     }
