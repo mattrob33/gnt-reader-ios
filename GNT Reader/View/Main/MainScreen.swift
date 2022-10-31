@@ -11,6 +11,7 @@ import SwiftUI
 struct MainScreen: View {
     
     @State private var isShowingContents: Bool = false
+    @State private var isCcomingSoonShowing: Bool = false
     
     @State private var wordInfoDetent = PresentationDetent.medium
     @State private var selectedWord: Word? = nil
@@ -18,13 +19,10 @@ struct MainScreen: View {
     @ObservedObject private var mainViewModel: MainViewModel = MainViewModel()
     @ObservedObject private var readerViewModel: ReaderViewModel = ReaderViewModel()
     
-    private var startingRef = VerseRef.deserialize(from: UserDefaults().string(forKey: "verse_ref") ?? "0_1_1")
-    
     var body: some View {
         ZStack(alignment: .bottom) {
             ReaderView(
                 viewModel: readerViewModel,
-                absChapterNum: getAbsoluteChapterNumForBook(startingRef.book) + startingRef.chapter - 1,
                 onTapWord: { word in
                     selectedWord = word
                 }
@@ -34,16 +32,28 @@ struct MainScreen: View {
                 onTapContents: {
                     isShowingContents = true
                 },
-                onTapVocab: {},
-                onTapAudio: {},
-                onTapSettings: {}
+                onTapVocab: {
+                    isCcomingSoonShowing = true
+                },
+                onTapAudio: {
+                    isCcomingSoonShowing = true
+                    
+                },
+                onTapSettings: {
+                    isCcomingSoonShowing = true
+                    
+                }
             )
+        }
+        .onAppear {
+            let startingRef = VerseRef.deserialize(from: UserDefaults().string(forKey: "verse_ref") ?? "0_1_1")
+            readerViewModel.goToVerseRef(startingRef)
         }
         .sheet(isPresented: $isShowingContents) {
             TableofContents(
                 onVerseRefSelected: { ref in
-                    readerViewModel.loadVersesForChapter(ref: ref)
                     isShowingContents = false
+                    readerViewModel.goToVerseRef(ref)
                 },
                 onDismiss: {
                     isShowingContents = false
@@ -57,6 +67,9 @@ struct MainScreen: View {
                     [.medium, .large],
                     selection: $wordInfoDetent
                 )
+        }
+        .alert("Coming Soon!", isPresented: $isCcomingSoonShowing) {
+            Button("Dismiss", role: .cancel) {}
         }
     }
 }

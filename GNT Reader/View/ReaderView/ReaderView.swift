@@ -11,28 +11,20 @@ import SwiftUI
 struct ReaderView: View {
 
     @ObservedObject var viewModel: ReaderViewModel = ReaderViewModel()
-    
-    var absChapterNum: Int
-    
-    var onTapWord: (Word) -> ()
 
+    var onTapWord: (Word) -> ()
+    
     var body: some View {
-        ScrollViewReader { position in
-            ScrollView {
-                LazyVStack {
-                    ForEach (0..<260, id: \.self) { i in
-                        let chapterRef = VerseRef.fromAbsoluteChapterNum(i)!
-                        ChapterTextView(
-                            viewModel: viewModel,
-                            chapterRef: chapterRef,
-                            verses: viewModel.getVersesForChapter(ref: chapterRef),
-                            onTapWord: onTapWord
-                        )
-                    }
-                }
-            }
-            .onAppear {
-                position.scrollTo(absChapterNum, anchor: .top)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                ChapterTextView(
+                    viewModel: viewModel,
+                    chapterRef: viewModel.verseRef,
+                    verses: viewModel.getVersesForChapter(ref: viewModel.verseRef),
+                    onTapWord: onTapWord
+                )
+                
+                Spacer().frame(height: 400)
             }
         }
         .padding()
@@ -42,7 +34,6 @@ struct ReaderView: View {
 struct ReaderView_Previews: PreviewProvider {
     static var previews: some View {
         ReaderView(
-            absChapterNum: 0,
             onTapWord: { word in}
         )
     }
