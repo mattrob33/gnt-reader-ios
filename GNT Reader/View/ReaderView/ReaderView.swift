@@ -11,7 +11,7 @@ import SwiftUI
 struct ReaderView: View {
 
     @ObservedObject var viewModel: ReaderViewModel = ReaderViewModel()
-    
+
     var onTapWord: (Word) -> ()
     
     var body: some View {

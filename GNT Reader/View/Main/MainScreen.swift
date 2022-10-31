@@ -11,6 +11,7 @@ import SwiftUI
 struct MainScreen: View {
     
     @State private var isShowingContents: Bool = false
+    @State private var isCcomingSoonShowing: Bool = false
     
     @State private var wordInfoDetent = PresentationDetent.medium
     @State private var selectedWord: Word? = nil
@@ -31,9 +32,17 @@ struct MainScreen: View {
                 onTapContents: {
                     isShowingContents = true
                 },
-                onTapVocab: {},
-                onTapAudio: {},
-                onTapSettings: {}
+                onTapVocab: {
+                    isCcomingSoonShowing = true
+                },
+                onTapAudio: {
+                    isCcomingSoonShowing = true
+                    
+                },
+                onTapSettings: {
+                    isCcomingSoonShowing = true
+                    
+                }
             )
         }
         .onAppear {
@@ -58,6 +67,9 @@ struct MainScreen: View {
                     [.medium, .large],
                     selection: $wordInfoDetent
                 )
+        }
+        .alert("Coming Soon!", isPresented: $isCcomingSoonShowing) {
+            Button("Dismiss", role: .cancel) {}
         }
     }
 }
