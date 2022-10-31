@@ -34,7 +34,7 @@
 		D8FE7E8828D57D3400996CEC /* WordInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E8728D57D3400996CEC /* WordInfoView.swift */; };
 		D8FE7E8A28D789E500996CEC /* WordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E8928D789E500996CEC /* WordInfo.swift */; };
 		D8FE7E8C28D789F000996CEC /* WordInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E8B28D789F000996CEC /* WordInfoDataSource.swift */; };
-		D8FE7E8E28D78A5600996CEC /* SqliteWordInfoDataSource copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E8D28D78A5600996CEC /* SqliteWordInfoDataSource copy.swift */; };
+		D8FE7E8E28D78A5600996CEC /* SqliteWordInfoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FE7E8D28D78A5600996CEC /* SqliteWordInfoDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +87,7 @@
 		D8FE7E8728D57D3400996CEC /* WordInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordInfoView.swift; sourceTree = "<group>"; };
 		D8FE7E8928D789E500996CEC /* WordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordInfo.swift; sourceTree = "<group>"; };
 		D8FE7E8B28D789F000996CEC /* WordInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordInfoDataSource.swift; sourceTree = "<group>"; };
-		D8FE7E8D28D78A5600996CEC /* SqliteWordInfoDataSource copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SqliteWordInfoDataSource copy.swift"; sourceTree = "<group>"; };
+		D8FE7E8D28D78A5600996CEC /* SqliteWordInfoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteWordInfoDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,7 +195,7 @@
 				D8D8614B28D4EE6B00735875 /* gnt-app.db */,
 				D87AB14726D2E0390026A857 /* VerseDataSource.swift */,
 				D8FE7E8B28D789F000996CEC /* WordInfoDataSource.swift */,
-				D8FE7E8D28D78A5600996CEC /* SqliteWordInfoDataSource copy.swift */,
+				D8FE7E8D28D78A5600996CEC /* SqliteWordInfoDataSource.swift */,
 				D87AB15626D30D880026A857 /* FakeVerseDataSourceImpl.swift */,
 				D8D8614628D4EB1300735875 /* SqliteVerseDataSource.swift */,
 			);
@@ -409,7 +409,7 @@
 				D8FE7E7E28D5166200996CEC /* VerseRefUtils.swift in Sources */,
 				D87AB14C26D2E0AA0026A857 /* Book.swift in Sources */,
 				D8FE7E8A28D789E500996CEC /* WordInfo.swift in Sources */,
-				D8FE7E8E28D78A5600996CEC /* SqliteWordInfoDataSource copy.swift in Sources */,
+				D8FE7E8E28D78A5600996CEC /* SqliteWordInfoDataSource.swift in Sources */,
 				D8FE7E7728D5068000996CEC /* MainScreen.swift in Sources */,
 				D87AB14826D2E0390026A857 /* VerseDataSource.swift in Sources */,
 				D87AB15A26D312CC0026A857 /* ReaderViewModel.swift in Sources */,

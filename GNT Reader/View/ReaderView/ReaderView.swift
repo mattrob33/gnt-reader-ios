@@ -15,23 +15,16 @@ struct ReaderView: View {
     var onTapWord: (Word) -> ()
     
     var body: some View {
-        ScrollViewReader { scrollState in
-            ScrollView {
-                LazyVStack {
-                    ForEach (0..<260, id: \.self) { i in
-                        let chapterRef = VerseRef.fromAbsoluteChapterNum(i)!
-                        ChapterTextView(
-                            viewModel: viewModel,
-                            chapterRef: chapterRef,
-                            verses: viewModel.getVersesForChapter(ref: chapterRef),
-                            onTapWord: onTapWord
-                        )
-                    }
-                }
-            }
-            .onReceive(viewModel.$verseRef) { (ref) in
-                let absChapterNum = getAbsoluteChapterNumForBook(ref.book) + ref.chapter - 1
-                scrollState.scrollTo(absChapterNum, anchor: .top)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                ChapterTextView(
+                    viewModel: viewModel,
+                    chapterRef: viewModel.verseRef,
+                    verses: viewModel.getVersesForChapter(ref: viewModel.verseRef),
+                    onTapWord: onTapWord
+                )
+                
+                Spacer().frame(height: 400)
             }
         }
         .padding()

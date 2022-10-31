@@ -52,8 +52,6 @@ class ReaderViewModel: ObservableObject {
                 words.append(word)
                 wordMap[wordId] = word
                 wordIdNum += 1
-                
-                print("\(verse.verseRef.book.title) \(verse.verseRef.chapter):\(verse.verseRef.verse ?? 1)\(wordId)")
             }
             
             chapter.append(
