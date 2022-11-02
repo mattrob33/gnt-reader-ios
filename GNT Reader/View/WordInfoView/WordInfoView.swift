@@ -36,15 +36,17 @@ struct GlossView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(selectedWord.lexicalForm).font(.custom("Cardo", size: 22)) +
-            Text(" (\(wordInfo?.occ ?? 0)x)").font(.system(size: 18, design: .serif))
+            Text(selectedWord.lexicalForm)
+                .font(.custom("Cardo", size: 22))
             
             if wordInfo != nil {
-                Text(wordInfo!.gloss).font(.system(size: 18, design: .serif))
+                Text(wordInfo!.gloss)
+                    .font(.system(size: 18, design: .serif))
             }
 
             Text(selectedWord.parsing.humanReadable)
                 .font(.system(size: 18, design: .serif))
+                .italic()
             
             Divider()
         }
@@ -64,10 +66,32 @@ struct ConcordanceView: View {
         
         VStack(alignment: .leading) {
             
-            ForEach(concordance, id: \.0) { entry in
+            Text("Concordance")
+                .font(.system(size: 20, design: .serif))
+                .bold()
+                .frame(maxWidth: .infinity, alignment: .center)
+            
+            Text("(\(concordance.count)x)")
+                .font(.system(size: 18, design: .serif))
+                .padding(.bottom, 16)
+                .frame(maxWidth: .infinity, alignment: .center)
+            
+            ForEach(0 ..< concordance.count) { index in
+                let entry = concordance[index]
                 let ref = entry.0
-                Text("\(ref.book.title) \(ref.chapter):\(ref.verse!)")
-                    .font(.system(size: 18, design: .serif))
+                let verse = entry.1.split(separator: " ").map { words in
+                    words.split(separator: "_")[0]
+                }.joined(separator: " ")
+
+                VStack(alignment: .leading) {
+                    Text("\(index + 1). \(ref.book.title) \(ref.chapter):\(ref.verse!)")
+                        .font(.system(size: 16, design: .serif))
+                        .bold()
+                    
+                    Text(verse)
+                        .font(.custom("Cardo", size: 20))
+                }
+                .padding(.bottom, 16)
             }
         }
         .frame(
