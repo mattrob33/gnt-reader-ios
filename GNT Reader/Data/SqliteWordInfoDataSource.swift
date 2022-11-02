@@ -38,5 +38,28 @@ class SqliteWordInfoDataSource: WordInfoDataSource {
         
         return nil
     }
+    
+    func getConcordance(for lex: String) -> [(VerseRef, String)] {
+        
+        let concordanceTable = Table("concordance")
+
+        let _lex = Expression<String>("lex")
+        let _book = Expression<Int>("book")
+        let _chapter = Expression<Int>("chapter")
+        let _verseNum = Expression<Int>("verse")
+
+        let query = concordanceTable.filter(_lex == lex)
+        
+        var concordance: [(VerseRef, String)] = []
+        
+        for result in try! db.prepare(query) {
+            let ref = VerseRef(book: Book(result[_book]), chapter: result[_chapter], verse: result[_verseNum])
+            concordance.append(
+                (ref, "")
+            )
+        }
+        
+        return concordance
+    }
 
 }

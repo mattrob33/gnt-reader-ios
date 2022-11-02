@@ -83,7 +83,7 @@ struct ChapterTextView: View {
             versesText
                 .font(.custom("Cardo", size: 22))
                 .lineSpacing(12)
-                .tint(.white)
+                .tint(.primary)
         }
     }
     

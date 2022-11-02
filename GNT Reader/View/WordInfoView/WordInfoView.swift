@@ -12,6 +12,27 @@ struct WordInfoView: View {
     
     var selectedWord: Word
     var wordInfo: WordInfo?
+    var concordance: [(VerseRef, String)]
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading) {
+                GlossView(
+                    selectedWord: selectedWord,
+                    wordInfo: wordInfo
+                )
+                
+                ConcordanceView(concordance: concordance)
+            }
+            .padding(16)
+        }
+    }
+}
+
+struct GlossView: View {
+    
+    var selectedWord: Word
+    var wordInfo: WordInfo?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -32,6 +53,27 @@ struct WordInfoView: View {
             maxHeight: .infinity,
             alignment: .topLeading
         )
-        .padding(16)
+    }
+}
+
+struct ConcordanceView: View {
+    
+    var concordance: [(VerseRef, String)]
+    
+    var body: some View {
+        
+        VStack(alignment: .leading) {
+            
+            ForEach(concordance, id: \.0) { entry in
+                let ref = entry.0
+                Text("\(ref.book.title) \(ref.chapter):\(ref.verse!)")
+                    .font(.system(size: 18, design: .serif))
+            }
+        }
+        .frame(
+            maxWidth: .infinity,
+            maxHeight: .infinity,
+            alignment: .topLeading
+        )
     }
 }

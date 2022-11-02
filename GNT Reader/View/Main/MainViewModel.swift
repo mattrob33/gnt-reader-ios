@@ -15,4 +15,8 @@ class MainViewModel: ObservableObject {
         return wordInfoDataSource.getWordInfo(for: lex)
     }
     
+    func getConcordance(for lex: String) -> [(VerseRef, String)] {
+        return wordInfoDataSource.getConcordance(for: lex)
+    }
+    
 }
