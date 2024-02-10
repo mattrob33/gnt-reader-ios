@@ -69,9 +69,9 @@ struct ChapterTextView: View {
         
         return VStack {
             if ref.chapter == 1 {
-                Text("\n\(bookTitles[ref.book.num])\n")
+                Text("\(bookTitles[ref.book.num])")
                     .font(.custom("Cardo", size: 28))
-                    .lineSpacing(24)
+                    .padding(.vertical, 16)
             }
             
             Text("\(ref.chapter)")
@@ -83,7 +83,7 @@ struct ChapterTextView: View {
             versesText
                 .font(.custom("Cardo", size: 22))
                 .lineSpacing(12)
-                .tint(.white)
+                .tint(.primary)
         }
     }
     
