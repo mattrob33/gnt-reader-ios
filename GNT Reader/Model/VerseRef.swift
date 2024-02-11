@@ -60,3 +60,17 @@ func getAbsoluteChapterNumForBook(_ book: Book) -> Int {
 
     return absChapterNum
 }
+
+extension VerseRef: Equatable {
+    static func ==(lhs: VerseRef, rhs: VerseRef) -> Bool {
+        return lhs.book.num == rhs.book.num && lhs.chapter == rhs.chapter && lhs.verse == rhs.verse
+    }
+}
+
+extension VerseRef: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(book.num)
+        hasher.combine(chapter)
+        hasher.combine(verse)
+    }
+}

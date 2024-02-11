@@ -38,5 +38,75 @@ class SqliteWordInfoDataSource: WordInfoDataSource {
         
         return nil
     }
+    
+    
+    func getConcordance(for lex: String) -> [(VerseRef, String)] {
+        
+        let concordanceTable = Table("concordance")
+        let versesTable = Table("verses")
+
+        let _lex = Expression<String>("lex")
+        let _book = Expression<Int>("book")
+        let _chapter = Expression<Int>("chapter")
+        let _verseNum = Expression<Int>("verse")
+        let _encodedText = Expression<String>("encoded_text")
+
+        let query = versesTable
+            .filter(concordanceTable[_lex] == lex)
+            .select(versesTable[*])
+            .join(
+                concordanceTable,
+                on: versesTable[_book] == concordanceTable[_book] &&
+                    versesTable[_chapter] == concordanceTable[_chapter] &&
+                    versesTable[_verseNum] == concordanceTable[_verseNum]
+            )
+        
+        var concordance: [(VerseRef, String)] = []
+        
+        for result in try! db.prepare(query) {
+            let ref = VerseRef(book: Book(result[versesTable[_book]]), chapter: result[versesTable[_chapter]], verse: result[versesTable[_verseNum]])
+            concordance.append(
+                (ref, result[versesTable[_encodedText]])
+            )
+        }
+        
+        return concordance
+    }
+    
+    func getVocabWordsForChapter(_ ref: VerseRef) -> [WordInfo] {
+        
+        let glossesTable = Table("glosses")
+        let concordanceTable = Table("concordance")
+        
+        let _book = Expression<Int>("book")
+        let _chapter = Expression<Int>("chapter")
+
+        let _lex = Expression<String>("lex")
+        let _gloss = Expression<String>("gloss")
+        let _occ = Expression<Int>("occ")
+        
+        let chapterConcordanceTempTable = concordanceTable.where(_book == ref.book.num && _chapter == ref.chapter)
+
+        let query = glossesTable
+            .join(chapterConcordanceTempTable, on: glossesTable[_lex] == chapterConcordanceTempTable[_lex])
+            .group(glossesTable[_lex])
+            .order(_occ.desc, glossesTable[_lex].asc)
+
+        var words: [WordInfo] = []
+        
+        for row in try! db.prepare(query) {
+            words.append(
+                WordInfo(
+                    lex: row[glossesTable[_lex]],
+                    gloss: row[_gloss],
+                    occ: row[_occ]
+                )
+            )
+        }
+        
+        return words
+    }
+    
+    
 
 }
