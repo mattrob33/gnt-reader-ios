@@ -40,7 +40,10 @@ struct ReaderView_Previews: PreviewProvider {
 }
 
 struct ChapterTextView: View {
-    
+
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+
     var viewModel: ReaderViewModel
     
     var chapterRef: VerseRef
@@ -50,17 +53,21 @@ struct ChapterTextView: View {
     var onTapWord: (Word) -> ()
     
     var body: some View {
-        getChapterText(verses, forRef: chapterRef)
-            .onOpenURL { url in
-                let wordIndex = url.absoluteString.index(url.absoluteString.startIndex, offsetBy: 4)
-                let wordId = String(url.absoluteString[wordIndex...].utf8)!
-                
-                let word = viewModel.getWord(byId: wordId)!
-                onTapWord(word)
-            }
+        getChapterText(
+            verses,
+            forRef: chapterRef,
+            isIpad: (verticalSizeClass == .regular && horizontalSizeClass == .regular)
+        )
+        .onOpenURL { url in
+            let wordIndex = url.absoluteString.index(url.absoluteString.startIndex, offsetBy: 4)
+            let wordId = String(url.absoluteString[wordIndex...].utf8)!
+            
+            let word = viewModel.getWord(byId: wordId)!
+            onTapWord(word)
+        }
     }
 
-    private func getChapterText(_ verses: [Verse], forRef ref: VerseRef) -> some View {
+    private func getChapterText(_ verses: [Verse], forRef ref: VerseRef, isIpad: Bool) -> some View {
         var versesText = Text("")
         
         for verse in verses {
@@ -81,10 +88,11 @@ struct ChapterTextView: View {
                 .border(.foreground)
             
             versesText
-                .font(.custom("Cardo", size: 22))
-                .lineSpacing(12)
+                .font(.custom("Cardo", size: isIpad ? 28 : 22))
+                .lineSpacing(isIpad ? 18 : 12)
                 .tint(.primary)
         }
+        .padding(.horizontal, isIpad ? 60 : 0)
     }
     
     private func getVerseText(_ verse: Verse) -> Text {
