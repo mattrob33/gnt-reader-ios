@@ -12,6 +12,7 @@ struct MainScreen: View {
     
     @State private var isShowingContents: Bool = false
     @State private var isShowingVocab: Bool = false
+    @State private var isShowingAudio: Bool = false
     @State private var isCcomingSoonShowing: Bool = false
     
     @State private var wordInfoDetent = PresentationDetent.medium
@@ -19,7 +20,7 @@ struct MainScreen: View {
 
     @ObservedObject private var mainViewModel: MainViewModel = MainViewModel()
     @ObservedObject private var readerViewModel: ReaderViewModel = ReaderViewModel()
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
             ReaderView(
@@ -37,7 +38,7 @@ struct MainScreen: View {
                     isShowingVocab = true
                 },
                 onTapAudio: {
-                    isCcomingSoonShowing = true
+                    isShowingAudio = true
                     
                 },
                 onTapSettings: {
@@ -68,6 +69,12 @@ struct MainScreen: View {
                     isShowingVocab = false
                 }
             )
+        }
+        .sheet(isPresented: $isShowingAudio) {
+            AudioView(
+                chapter: readerViewModel.verseRef
+            )
+            .presentationDetents([.height(300)])
         }
         .sheet(item: $selectedWord) { selectedWord in
             let wordInfo = mainViewModel.getWordInfo(for: selectedWord.lexicalForm)
