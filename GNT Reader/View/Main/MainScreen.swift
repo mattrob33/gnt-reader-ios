@@ -11,6 +11,7 @@ import SwiftUI
 struct MainScreen: View {
     
     @State private var isShowingContents: Bool = false
+    @State private var isShowingVocab: Bool = false
     @State private var isCcomingSoonShowing: Bool = false
     
     @State private var wordInfoDetent = PresentationDetent.medium
@@ -27,13 +28,13 @@ struct MainScreen: View {
                     selectedWord = word
                 }
             )
-            
+
             BottomBar(
                 onTapContents: {
                     isShowingContents = true
                 },
                 onTapVocab: {
-                    isCcomingSoonShowing = true
+                    isShowingVocab = true
                 },
                 onTapAudio: {
                     isCcomingSoonShowing = true
@@ -57,6 +58,14 @@ struct MainScreen: View {
                 },
                 onDismiss: {
                     isShowingContents = false
+                }
+            )
+        }
+        .sheet(isPresented: $isShowingVocab) {
+            VocabView(
+                chapter: readerViewModel.verseRef,
+                onDismiss: {
+                    isShowingVocab = false
                 }
             )
         }
