@@ -72,5 +72,41 @@ class SqliteWordInfoDataSource: WordInfoDataSource {
         
         return concordance
     }
+    
+    func getVocabWordsForChapter(_ ref: VerseRef) -> [WordInfo] {
+        
+        let glossesTable = Table("glosses")
+        let concordanceTable = Table("concordance")
+        
+        let _book = Expression<Int>("book")
+        let _chapter = Expression<Int>("chapter")
+
+        let _lex = Expression<String>("lex")
+        let _gloss = Expression<String>("gloss")
+        let _occ = Expression<Int>("occ")
+        
+        let chapterConcordanceTempTable = concordanceTable.where(_book == ref.book.num && _chapter == ref.chapter)
+
+        let query = glossesTable
+            .join(chapterConcordanceTempTable, on: glossesTable[_lex] == chapterConcordanceTempTable[_lex])
+            .group(glossesTable[_lex])
+            .order(_occ.desc, glossesTable[_lex].asc)
+
+        var words: [WordInfo] = []
+        
+        for row in try! db.prepare(query) {
+            words.append(
+                WordInfo(
+                    lex: row[glossesTable[_lex]],
+                    gloss: row[_gloss],
+                    occ: row[_occ]
+                )
+            )
+        }
+        
+        return words
+    }
+    
+    
 
 }
