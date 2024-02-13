@@ -11,6 +11,8 @@ import SwiftUI
 struct ReaderView: View {
 
     @ObservedObject var viewModel: ReaderViewModel = ReaderViewModel()
+    
+    @Binding var settings: ReaderSettings
 
     var onTapWord: (Word) -> ()
     
@@ -19,6 +21,7 @@ struct ReaderView: View {
             VStack {
                 ChapterTextView(
                     viewModel: viewModel,
+                    settings: settings,
                     chapterRef: viewModel.verseRef,
                     verses: viewModel.getVersesForChapter(ref: viewModel.verseRef),
                     onTapWord: onTapWord
@@ -31,13 +34,6 @@ struct ReaderView: View {
     }
 }
 
-struct ReaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReaderView(
-            onTapWord: { word in}
-        )
-    }
-}
 
 struct ChapterTextView: View {
 
@@ -45,6 +41,8 @@ struct ChapterTextView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
 
     var viewModel: ReaderViewModel
+    
+    var settings: ReaderSettings
     
     var chapterRef: VerseRef
     
@@ -77,24 +75,24 @@ struct ChapterTextView: View {
         return VStack {
             if ref.chapter == 1 {
                 Text("\(bookTitles[ref.book.num])")
-                    .font(.custom("Cardo", size: 28))
+                    .font(.custom(settings.font.fontName(), size: CGFloat(settings.fontSize)))
                     .padding(.vertical, 16)
             }
             
             Text("\(ref.chapter)")
-                .font(.custom("Cardo", size: 28))
-                .lineSpacing(24)
+                .font(.custom(settings.font.fontName(), size: CGFloat(settings.fontSize)))
+                .lineSpacing(CGFloat(settings.lineSpacing))
                 .padding()
                 .border(.foreground)
             
             versesText
-                .font(.custom("Cardo", size: isIpad ? 28 : 22))
+                .font(.custom(settings.font.fontName(), size: CGFloat(settings.fontSize)))
                 .lineSpacing(isIpad ? 18 : 12)
                 .tint(.primary)
         }
         .padding(.horizontal, isIpad ? 60 : 0)
     }
-    
+
     private func getVerseText(_ verse: Verse) -> Text {
         var text = Text("\(verse.verseRef.verse!)\u{00a0}").superscript()
         for word in verse.words {

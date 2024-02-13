@@ -93,7 +93,7 @@ struct AudioView: View {
                 .onTapGesture {
                     isModern.wrappedValue = false
                 }
-            
+
             Toggle("Pronunciation", isOn: isModern)
                 .labelsHidden()
                 .toggleStyle(SwitchToggleStyle(tint: .accentColor))
