@@ -10,20 +10,24 @@ import SwiftUI
 
 struct MainScreen: View {
     
+    @State private var readerSettings: ReaderSettings = ReaderSettingsStorage.shared.load()
+
     @State private var isShowingContents: Bool = false
     @State private var isShowingVocab: Bool = false
-    @State private var isCcomingSoonShowing: Bool = false
+    @State private var isShowingAudio: Bool = false
+    @State private var isShowingSettings: Bool = false
     
     @State private var wordInfoDetent = PresentationDetent.medium
     @State private var selectedWord: Word? = nil
 
     @ObservedObject private var mainViewModel: MainViewModel = MainViewModel()
     @ObservedObject private var readerViewModel: ReaderViewModel = ReaderViewModel()
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
             ReaderView(
                 viewModel: readerViewModel,
+                settings: $readerSettings,
                 onTapWord: { word in
                     selectedWord = word
                 }
@@ -37,11 +41,11 @@ struct MainScreen: View {
                     isShowingVocab = true
                 },
                 onTapAudio: {
-                    isCcomingSoonShowing = true
+                    isShowingAudio = true
                     
                 },
                 onTapSettings: {
-                    isCcomingSoonShowing = true
+                    isShowingSettings = true
                     
                 }
             )
@@ -69,6 +73,26 @@ struct MainScreen: View {
                 }
             )
         }
+        .sheet(isPresented: $isShowingAudio) {
+            AudioView(
+                chapter: readerViewModel.verseRef
+            )
+            .presentationDetents([.height(300)])
+        }
+        .sheet(
+            isPresented: $isShowingSettings,
+            onDismiss: {
+                readerSettings = ReaderSettingsStorage.shared.load()
+                isShowingSettings = false
+            }
+        ) {
+            SettingsView(
+                onDismiss: {
+                    readerSettings = ReaderSettingsStorage.shared.load()
+                    isShowingSettings = false
+                }
+            )
+        }
         .sheet(item: $selectedWord) { selectedWord in
             let wordInfo = mainViewModel.getWordInfo(for: selectedWord.lexicalForm)
             let concordance = mainViewModel.getConcordance(for: selectedWord.lexicalForm)
@@ -78,9 +102,6 @@ struct MainScreen: View {
                     [.medium, .large],
                     selection: $wordInfoDetent
                 )
-        }
-        .alert("Coming Soon!", isPresented: $isCcomingSoonShowing) {
-            Button("Dismiss", role: .cancel) {}
         }
     }
 }

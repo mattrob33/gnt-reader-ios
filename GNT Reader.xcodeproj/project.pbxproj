@@ -10,6 +10,16 @@
 		0F31A36C2B78374200ECB50B /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F31A36B2B78372E00ECB50B /* VocabView.swift */; };
 		0F31A36E2B783D4B00ECB50B /* VocabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F31A36D2B783D4B00ECB50B /* VocabViewModel.swift */; };
 		0F31A3702B7858F500ECB50B /* ChipsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F31A36F2B7858F500ECB50B /* ChipsRowView.swift */; };
+		0F4BE3AE2B7949EC0061369A /* AudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4BE3AC2B792D790061369A /* AudioView.swift */; };
+		0F4BE3AF2B7949EC0061369A /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4BE3AD2B792D790061369A /* AudioViewModel.swift */; };
+		0F4BE3B32B7974BE0061369A /* GntPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4BE3B22B7974BE0061369A /* GntPlayer.swift */; };
+		0F6853642B7A660C0087616A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6853622B7A66060087616A /* SettingsViewModel.swift */; };
+		0F6853652B7A660C0087616A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6853632B7A66060087616A /* SettingsView.swift */; };
+		0F6853672B7A6BB70087616A /* ReaderPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6853662B7A6BB70087616A /* ReaderPreview.swift */; };
+		0F68536A2B7A6FD80087616A /* ReaderSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6853692B7A6FD80087616A /* ReaderSettings.swift */; };
+		0F68536C2B7A78A90087616A /* ReaderFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F68536B2B7A78A90087616A /* ReaderFont.swift */; };
+		0F68536E2B7A85330087616A /* ReaderSettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F68536D2B7A85330087616A /* ReaderSettingsStorage.swift */; };
+		0F74F7402B79DA0600D2C1ED /* PlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F74F73F2B79DA0600D2C1ED /* PlaybackState.swift */; };
 		D87AB11326D2DECC0026A857 /* GNT_ReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87AB11226D2DECC0026A857 /* GNT_ReaderApp.swift */; };
 		D87AB11726D2DECC0026A857 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87AB11626D2DECC0026A857 /* Assets.xcassets */; };
 		D87AB11A26D2DECC0026A857 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87AB11926D2DECC0026A857 /* Preview Assets.xcassets */; };
@@ -61,6 +71,16 @@
 		0F31A36B2B78372E00ECB50B /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
 		0F31A36D2B783D4B00ECB50B /* VocabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabViewModel.swift; sourceTree = "<group>"; };
 		0F31A36F2B7858F500ECB50B /* ChipsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipsRowView.swift; sourceTree = "<group>"; };
+		0F4BE3AC2B792D790061369A /* AudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioView.swift; sourceTree = "<group>"; };
+		0F4BE3AD2B792D790061369A /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
+		0F4BE3B22B7974BE0061369A /* GntPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GntPlayer.swift; sourceTree = "<group>"; };
+		0F6853622B7A66060087616A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		0F6853632B7A66060087616A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0F6853662B7A6BB70087616A /* ReaderPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderPreview.swift; sourceTree = "<group>"; };
+		0F6853692B7A6FD80087616A /* ReaderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderSettings.swift; sourceTree = "<group>"; };
+		0F68536B2B7A78A90087616A /* ReaderFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderFont.swift; sourceTree = "<group>"; };
+		0F68536D2B7A85330087616A /* ReaderSettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderSettingsStorage.swift; sourceTree = "<group>"; };
+		0F74F73F2B79DA0600D2C1ED /* PlaybackState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackState.swift; sourceTree = "<group>"; };
 		D87AB10F26D2DECC0026A857 /* GNT Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GNT Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87AB11226D2DECC0026A857 /* GNT_ReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNT_ReaderApp.swift; sourceTree = "<group>"; };
 		D87AB11626D2DECC0026A857 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,6 +152,44 @@
 			path = Vocab;
 			sourceTree = "<group>";
 		};
+		0F4BE3AB2B792D630061369A /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				0F4BE3AC2B792D790061369A /* AudioView.swift */,
+				0F4BE3AD2B792D790061369A /* AudioViewModel.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		0F4BE3B02B7974A40061369A /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				0F4BE3B22B7974BE0061369A /* GntPlayer.swift */,
+				0F74F73F2B79DA0600D2C1ED /* PlaybackState.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		0F6853612B7A65F10087616A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0F6853632B7A66060087616A /* SettingsView.swift */,
+				0F6853622B7A66060087616A /* SettingsViewModel.swift */,
+				0F6853662B7A6BB70087616A /* ReaderPreview.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0F6853682B7A6FB00087616A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0F6853692B7A6FD80087616A /* ReaderSettings.swift */,
+				0F68536B2B7A78A90087616A /* ReaderFont.swift */,
+				0F68536D2B7A85330087616A /* ReaderSettingsStorage.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		D87AB10626D2DECB0026A857 = {
 			isa = PBXGroup;
 			children = (
@@ -156,9 +214,11 @@
 			isa = PBXGroup;
 			children = (
 				D8FE7E7F28D51A6600996CEC /* fonts */,
-				D87AB15326D2F7AD0026A857 /* Util */,
-				D87AB14426D2DF7E0026A857 /* Model */,
+				0F4BE3B02B7974A40061369A /* Audio */,
 				D87AB14326D2DF600026A857 /* Data */,
+				D87AB14426D2DF7E0026A857 /* Model */,
+				0F6853682B7A6FB00087616A /* Settings */,
+				D87AB15326D2F7AD0026A857 /* Util */,
 				D87AB14226D2DF4B0026A857 /* View */,
 				D87AB11226D2DECC0026A857 /* GNT_ReaderApp.swift */,
 				D87AB11626D2DECC0026A857 /* Assets.xcassets */,
@@ -197,9 +257,11 @@
 		D87AB14226D2DF4B0026A857 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0F4BE3AB2B792D630061369A /* Audio */,
 				D8FE7E7A28D50A2100996CEC /* Contents */,
 				D8FE7E7528D5067500996CEC /* Main */,
 				D87AB15826D312B90026A857 /* ReaderView */,
+				0F6853612B7A65F10087616A /* Settings */,
 				0F31A36A2B7836F600ECB50B /* Vocab */,
 				D8FE7E8628D57D2600996CEC /* WordInfoView */,
 			);
@@ -424,21 +486,31 @@
 			files = (
 				D87AB15526D2F7B70026A857 /* StringExtensions.swift in Sources */,
 				0F31A36C2B78374200ECB50B /* VocabView.swift in Sources */,
+				0F4BE3AF2B7949EC0061369A /* AudioViewModel.swift in Sources */,
+				0F6853672B7A6BB70087616A /* ReaderPreview.swift in Sources */,
+				0F6853642B7A660C0087616A /* SettingsViewModel.swift in Sources */,
 				D8FE7E7E28D5166200996CEC /* VerseRefUtils.swift in Sources */,
 				D87AB14C26D2E0AA0026A857 /* Book.swift in Sources */,
 				D8FE7E8A28D789E500996CEC /* WordInfo.swift in Sources */,
+				0F6853652B7A660C0087616A /* SettingsView.swift in Sources */,
 				D8FE7E8E28D78A5600996CEC /* SqliteWordInfoDataSource.swift in Sources */,
 				D8FE7E7728D5068000996CEC /* MainScreen.swift in Sources */,
+				0F4BE3AE2B7949EC0061369A /* AudioView.swift in Sources */,
 				D87AB14826D2E0390026A857 /* VerseDataSource.swift in Sources */,
 				D87AB15A26D312CC0026A857 /* ReaderViewModel.swift in Sources */,
 				D87AB14E26D2E1B00026A857 /* Verse.swift in Sources */,
 				D8FE7E8C28D789F000996CEC /* WordInfoDataSource.swift in Sources */,
 				0F31A3702B7858F500ECB50B /* ChipsRowView.swift in Sources */,
+				0F68536A2B7A6FD80087616A /* ReaderSettings.swift in Sources */,
 				D8FE7E7C28D50A2D00996CEC /* TableofContents.swift in Sources */,
 				D87AB15726D30D880026A857 /* FakeVerseDataSourceImpl.swift in Sources */,
 				D8FE7E7928D506BB00996CEC /* MainViewModel.swift in Sources */,
+				0F68536C2B7A78A90087616A /* ReaderFont.swift in Sources */,
 				D87AB14626D2DFE40026A857 /* ReaderView.swift in Sources */,
+				0F74F7402B79DA0600D2C1ED /* PlaybackState.swift in Sources */,
+				0F4BE3B32B7974BE0061369A /* GntPlayer.swift in Sources */,
 				D87AB14A26D2E06A0026A857 /* VerseRef.swift in Sources */,
+				0F68536E2B7A85330087616A /* ReaderSettingsStorage.swift in Sources */,
 				D87AB15026D2E1BD0026A857 /* Word.swift in Sources */,
 				D8D8614728D4EB1300735875 /* SqliteVerseDataSource.swift in Sources */,
 				D87AB15226D2E1E50026A857 /* WordParsing.swift in Sources */,
@@ -612,7 +684,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mattrobertson.GNT-Reader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -636,7 +708,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mattrobertson.GNT-Reader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -10,7 +10,7 @@ import Foundation
 class ReaderViewModel: ObservableObject {
 
     @Published private(set) var verseRef: VerseRef = VerseRef(book: Book(0), chapter: 1, verse: 1)
-    
+
     private(set) var verses: [Verse] = []
     
     private(set) var wordMap: [String : Word] = [:]
